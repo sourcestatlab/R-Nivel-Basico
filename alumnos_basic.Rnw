@@ -1,0 +1,61 @@
+\documentclass[11pt,a4paper,oneside]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{pst-eucl,pstricks,pstricks-add}
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{times}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec}
+\usepackage{color}
+\usepackage{url}
+\usepackage{float}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{lmodern}
+\usepackage{setspace}
+%\doublespace %para doble espacio
+\onehalfspace %para espacio y medio
+\newcommand{\code}[1]{\fcolorbox{blue!80}{gray!10}{#1}}
+\parindent=0mm
+
+\begin{document}
+\begin{minipage}[d]{115mm}
+\includegraphics[height=2.5cm, width=7.5cm]{logo_ult.pdf}
+\end{minipage}
+\begin{minipage}[d]{70mm}
+\textsf{\textbf{\sc \tiny {\bf QUITO}: Fernando Oviedo E8-65 y José Barba}}\\
+%\textsf{\textbf{\sc \tiny \qquad  Sector El Dorado}}\\
+\textsf{\textbf{\sc \tiny {\bf CONTACTOS}: (02) 2 559-703 / (02) 2 602-560\\ Movistar: 0998428362 / 0998890021}}
+\end{minipage}\\
+\vspace{0.4cm}
+
+\begin{center}
+{\bf \Large Inscritos Curso R Nivel Básico}
+\end{center}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}\hline \hline
+{\bf N} & {\bf Nombre}\\ \hline \hline
+1 & Wilson Roberto Paneluisa\\ \hline
+2 & Yohandra Rubi Arias\\ \hline
+3 & David Pachacama \\ \hline
+4 & Miguel Ángel Sánchez\\ \hline
+5 & Juan Carlos Pozo\\ \hline
+6 & Estefanía Johana Enríquez\\ \hline
+7 & Andrea Lorena Argüello\\ \hline
+8 & Luis Javier Zurita\\ \hline
+9 & David Andrés Morocho\\ \hline
+10 & Edy Xavier Panchi\\ \hline
+11 & Juan David Rivera\\ \hline
+12 & Guillermo Santamaria\\ \hline
+\end{tabular}
+\caption{Lista Preliminar}
+\end{table}
+
+
+
+\end{document}
