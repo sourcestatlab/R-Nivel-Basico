@@ -32,9 +32,9 @@
 \end{minipage}\\
 \vspace{0.4cm}
 
-\begin{center}
-{\bf \Large Inscritos Curso R Nivel Básico}
-\end{center}
+%\begin{center}
+%{\bf \Large Inscritos Curso R Nivel Básico}
+%\end{center}
 
 \begin{table}[H]
 \centering
@@ -75,6 +75,8 @@
 33& Katherine Paz \\ \hline
 34& Jessica Belén Arevalo \\ \hline
 35& Evelyn Gavilanez \\ \hline
+36& Jessica Reinoso\\ \hline
+37& Diana Carolina Simbaña\\ \hline 
 \end{tabular}
 \caption{Lista Preliminar}
 \end{table}
