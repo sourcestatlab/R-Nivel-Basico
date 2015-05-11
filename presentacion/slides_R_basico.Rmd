@@ -90,6 +90,8 @@ que permiten ampliar la capacidad  de los gráficos, funciones estadísticas cl�
 Los paquetes estándar pueden ser visualizados a través del siguiente comando:
 
 ```{r}
+# no se muestran advertencias
+options(warn=-1)
 search()
 ```
 
@@ -128,9 +130,9 @@ install.packages("pckgname", dependencies=TRUE)
 En el caso que se desee instalar un lista de $n$ paquetes planteamos la siguiente solución:
 ```{r, eval=FALSE}
 paquetes <- c("pckg_1","pckg_2", ... , "pckg_n")
-lapply(seq_along(paquetes), function(i){
-      install.packages(paquetes[[i]], dependencies=TRUE)
-      })
+install.packages(paquetes, dependencies=TRUE)
+# funciones apply
+# sapply(X=paquetes, FUN=install.packages, dependencies=TRUE)
 ```
 
 ## <b> <font color=SteelBlue face=Cambria size=7> Ejemplos </font> </b>
@@ -140,12 +142,18 @@ lapply(seq_along(paquetes), function(i){
 install.packages("devtools", dependencies = TRUE)
 ```
 
-* Para instalar los paquetes.
+* Para instalar los paquetes "devtools", "forecast", "foreign", utilizamos:
+```{r, eval=FALSE}
+paquetes <- c("foreign", "forecast", "gWidgets")
+install.packages(paquetes, dependencies=TRUE)
+# funciones apply
+# sapply(X=paquetes, FUN=install.packages, dependencies=TRUE)
+```
 
 
 ## <b> <font color=SteelBlue face=Cambria size=7> Instalando paquetes </font> </b>
 
-* Algunos de los paquetes se encuentran en formato binario, para su instalación basta adicionar el parámetro 
+* Algunos de los paquetes se encuentran en __formato binario__, para su instalación basta adicionar el parámetro 
 ___type="source"___.
 
 ```{r, eval=FALSE}
@@ -154,13 +162,13 @@ install.packages("pckgname", repos="http://r-forge.r-project.org", type="source"
 install.packages("pckgname", repos="http://www.bioconductor.org/packages/2.10/bioc", type="source")
 ```
 
-* Para visualizar el listado completo de los paquetes instalados podemos recurrir al comando:
+* Para visualizar el __listado completo de los paquetes instalados__ podemos recurrir al comando:
 
 ```{r, eval=FALSE}
 library() 
 ```
 
-* Para conocer la totalidad de paquetes que se encuentran albergados en la CRAN, y a su vez verificar cuales de ellos se encuentran instalados y disponibles para su uso, empleamos los comandos:
+* Para conocer la totalidad de paquetes que se encuentran albergados en la CRAN, y a su vez verificar cuales de ellos se encuentran __instalados y disponibles__ para su uso, empleamos los comandos:
 ```{r, eval=FALSE}
 # paquetes instalados
 installed.packages()
@@ -170,21 +178,31 @@ available.packages()
 ```
 
 
-## <b> <font color=SteelBlue face=Cambria size=7> Instalando paquetes </font> </b>
+## <b> <font color=SteelBlue face=Cambria size=7> Cargando paquetes </font> </b>
 
-Para conocer los paquetes cargados en el área de trabajo utilizamos:
+* Una vez instalado el paquete, se debe proceder a cargarlo en el área de trabajo, para poder utilizar las funciones en él implementadas, para ello utilizamos:
+
+* Para conocer los paquetes cargados actualmente utilizamos:
 ```{r, eval=TRUE}
 sessionInfo()
 ```
 
 ## <b> <font color=SteelBlue face=Cambria size=7> Cargando paquetes </font> </b>
-
-* Una vez instalado el paquete, se debe proceder a cargarlo en el área de trabajo, para poder utilizar las funciones en él implementadas, para ello utilizamos:
 ```{r, eval=TRUE}
-library("ggplot2")
+# paquetes cargados
+(.packages())
 ```
 
-* Para visualizar el listado de paquetes cargados en el área de trabajo se utiliza:
+* Para cargar un paquete nuevo al área de trabajo utilizamos la función `library()`:
+```{r, eval=TRUE}
+library("devtools")
+```
+
+```{r, eval=FALSE}
+paquetes <- c("foreign", "forecast", "gWidgets")
+sapply(X=paquetes, FUN=library,character.only=TRUE)
+```
+
 ```{r, eval=TRUE}
 # paquetes cargados
 (.packages())
@@ -192,20 +210,22 @@ library("ggplot2")
 
 ## <b> <font color=SteelBlue face=Cambria size=7> Git & Github </font> </b>
 
-GitHub es un repositorio de archivos y proyectos el cual emplea un sistema de control de versiones conocido como Git y permite almacenar el código en repositorios de forma pública.
+* GitHub es un repositorio de archivos y proyectos que emplea un sistema de control de 
+versiones conocido como Git y permite almacenar el código en repositorios de forma pública.
 
 <p align="center"> 
 ![Github](figures/github.jpg)
 </p>
 
-
-La instalación y sincronización de Git & Github con RStudio se realiza de la siguiente manera:
-
-  * Descargar e instalar la plataforma específica de [Git](http://www.git-scm.com/) con las opciones por default.
-  * Configurar Git con los comandos globales a través de la versión bash, esto permitirá que Git tenga conexión con los repositorios de Github para el envió/recepción de archivos, teclear lo siguiente:
+* La instalación y sincronización de Git & Github con RStudio se realiza mediante:
+    * Descargar e instalar la plataforma específica de [Git](http://www.git-scm.com/) con las 
+  opciones por default.
+    * Configurar Git con los comandos globales a través de la versión bash, esto permitirá que 
+  Git tenga conexión con los repositorios de Github para el envió/recepción de archivos, 
+  teclear lo siguiente:
 
 ```{r, eval=FALSE}
-  git config --global user.name "nombre de la cuenta de Github"
+  git config --global user.name "Usuario de Github"
 
   git config --global user.email "Github-email@something.com"
 ```
@@ -223,29 +243,25 @@ Dimensión | Homogeneos | Heterogeneos
 2d | Matrix        |Data Frame
 nd | Array         | 
 
-```
-R no tiene estructuras 0d, los números y strings se consideran como vectores de longitud 1
-```
+\n
 
-La función `str()` (structure) presenta una descripción compacta de la estructura de datos.
-```{r, eval=TRUE}
-str(cars)
-```
-
+* __Observación.__ R no tiene estructuras 0d (magnitudes escalares), los números y strings se consideran como vectores de longitud 1
 
 ## <b> <font color=SteelBlue face=Cambria size=7> Vectores </font> </b>
 
-La estructura de datos básica de R son los vectores, estos se dividen en:
+* La estructura de datos básica de R son los vectores, estos se dividen en:
+    + __Vectores atómicos y Listas__
 
-* __Vectores atómicos y Listas__
+* Presentan tres propiedades comunes:
+    + Tipo (Qué es?). `typeof()`
+    + Longitud (Número de elementos) `length()`
+    + Atributos (Metadata). `attributes()`
 
-y presentan tres propiedades comunes:
-
-1. Tipo (Qué es?). `typeof()`
-2. Longitud (Número de elementos) `length()`
-3. Atributos (Metadata). `attributes()`
-
-* Para probar que una estructura de datos es un vector (con un solo atributo __names__) se utiliza la función `is.vector()`. 
+* Para probar que una estructura de datos es un vector (atómico o lista) se utiliza la función:
+```{r,eval=FALSE}
+is.vector(x)
+```
+* `is.vector(x)` retorna `TRUE` si `x` es un vector atómico o una lista.
 
 ## <b> <font color=SteelBlue face=Cambria size=7> Vectores atómicos </font> </b>
 
@@ -399,9 +415,11 @@ x$nomb_obj
 4. 
 
 
-
-
-
+## <b> <font color=SteelBlue face=Cambria size=7> Función structure </font> </b>
+La función `str()` (structure) presenta una descripción compacta de la estructura de datos.
+```{r, eval=TRUE}
+str(cars)
+```
 
 
 
