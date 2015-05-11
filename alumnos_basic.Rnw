@@ -23,7 +23,7 @@
 
 \begin{document}
 \begin{minipage}[d]{115mm}
-\includegraphics[height=2.5cm, width=7.5cm]{logo_ult.pdf}
+\includegraphics[height=4.5cm, width=7.5cm]{logo_ult.pdf}
 \end{minipage}
 \begin{minipage}[d]{70mm}
 \textsf{\textbf{\sc \tiny {\bf QUITO}: Fernando Oviedo E8-65 y José Barba}}\\
@@ -45,13 +45,33 @@
 3 & David Pachacama \\ \hline
 4 & Miguel Ángel Sánchez\\ \hline
 5 & Juan Carlos Pozo\\ \hline
-6 & Estefanía Johana Enríquez\\ \hline
-7 & Andrea Lorena Argüello\\ \hline
-8 & Luis Javier Zurita\\ \hline
-9 & David Andrés Morocho\\ \hline
-10 & Edy Xavier Panchi\\ \hline
-11 & Juan David Rivera\\ \hline
-12 & Guillermo Santamaria\\ \hline
+6 & Estefanía Enríquez\\ \hline
+7 & Andrea Argüello\\ \hline
+8& David Mafla \\ \hline
+9& Erika Canencia \\ \hline
+10& Caren Castillo \\ \hline
+11& Jenny Tenisaca \\ \hline
+12& Gabriela Jiménez \\ \hline
+13& Johanna Hidalgo  \\ \hline
+14& Leonardo Vinueza \\ \hline
+15& María del Cisne Villamil \\ \hline
+16& Katherine Lara \\ \hline
+17& Henri Flores \\ \hline
+18& Lizeth Vizcaino \\ \hline
+19& Diana López \\ \hline
+20& Javier Zurita \\ \hline
+21& Edy Xavier Panchi \\ \hline
+22& Katia Chulde \\ \hline
+23& Jaime Chicaiza \\ \hline
+24& Jose Gabriel Suntaxi \\ \hline
+25& Lisa Larrea \\ \hline
+26& Estefanía Cisneros \\ \hline
+27& Fernanda Juma \\ \hline
+28& Jeniffer Rodriguez \\ \hline
+29& Joselyn Quisnancela \\ \hline
+30& Fernanda Mosquera \\ \hline
+31& Francis Parra  \\ \hline
+32& Verónica Guerrón \\ \hline
 \end{tabular}
 \caption{Lista Preliminar}
 \end{table}
