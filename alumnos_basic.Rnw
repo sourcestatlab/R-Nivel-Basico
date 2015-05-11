@@ -72,6 +72,7 @@
 30& Fernanda Mosquera \\ \hline
 31& Francis Parra  \\ \hline
 32& Verónica Guerrón \\ \hline
+33& Katherine Paz \\ \hline
 \end{tabular}
 \caption{Lista Preliminar}
 \end{table}
