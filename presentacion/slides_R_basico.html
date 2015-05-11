@@ -188,7 +188,9 @@
 
 <p>Los paquetes estándar pueden ser visualizados a través del siguiente comando:</p>
 
-<pre class = 'prettyprint lang-r'>search()</pre>
+<pre class = 'prettyprint lang-r'># no se muestran advertencias
+options(warn=-1)
+search()</pre>
 
 <pre >## [1] &quot;.GlobalEnv&quot;        &quot;package:stats&quot;     &quot;package:graphics&quot; 
 ## [4] &quot;package:grDevices&quot; &quot;package:utils&quot;     &quot;package:datasets&quot; 
@@ -235,9 +237,9 @@
 <p>En el caso que se desee instalar un lista de \(n\) paquetes planteamos la siguiente solución:</p>
 
 <pre class = 'prettyprint lang-r'>paquetes &lt;- c(&quot;pckg_1&quot;,&quot;pckg_2&quot;, ... , &quot;pckg_n&quot;)
-lapply(seq_along(paquetes), function(i){
-      install.packages(paquetes[[i]], dependencies=TRUE)
-      })</pre>
+install.packages(paquetes, dependencies=TRUE)
+# funciones apply
+# sapply(X=paquetes, FUN=install.packages, dependencies=TRUE)</pre>
 
 </article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Ejemplos </font> </b></h2></hgroup><article  id="ejemplos" class="smaller ">
 
@@ -248,13 +250,18 @@ lapply(seq_along(paquetes), function(i){
 <pre class = 'prettyprint lang-r'>install.packages(&quot;devtools&quot;, dependencies = TRUE)</pre>
 
 <ul>
-<li>Para instalar los paquetes.</li>
+<li>Para instalar los paquetes &quot;devtools&quot;, &quot;forecast&quot;, &quot;foreign&quot;, utilizamos:</li>
 </ul>
+
+<pre class = 'prettyprint lang-r'>paquetes &lt;- c(&quot;foreign&quot;, &quot;forecast&quot;, &quot;gWidgets&quot;)
+install.packages(paquetes, dependencies=TRUE)
+# funciones apply
+# sapply(X=paquetes, FUN=install.packages, dependencies=TRUE)</pre>
 
 </article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Instalando paquetes </font> </b></h2></hgroup><article  id="instalando-paquetes-1" class="smaller ">
 
 <ul>
-<li>Algunos de los paquetes se encuentran en formato binario, para su instalación basta adicionar el parámetro <strong><em>type=&quot;source&quot;</em></strong>.</li>
+<li>Algunos de los paquetes se encuentran en <strong>formato binario</strong>, para su instalación basta adicionar el parámetro <strong><em>type=&quot;source&quot;</em></strong>.</li>
 </ul>
 
 <pre class = 'prettyprint lang-r'>install.packages(&quot;pckgname&quot;, repos=&quot;http://www.omegahat.org/R&quot;, type=&quot;source&quot;)
@@ -262,13 +269,13 @@ install.packages(&quot;pckgname&quot;, repos=&quot;http://r-forge.r-project.org&
 install.packages(&quot;pckgname&quot;, repos=&quot;http://www.bioconductor.org/packages/2.10/bioc&quot;, type=&quot;source&quot;)</pre>
 
 <ul>
-<li>Para visualizar el listado completo de los paquetes instalados podemos recurrir al comando:</li>
+<li>Para visualizar el <strong>listado completo de los paquetes instalados</strong> podemos recurrir al comando:</li>
 </ul>
 
 <pre class = 'prettyprint lang-r'>library() </pre>
 
 <ul>
-<li>Para conocer la totalidad de paquetes que se encuentran albergados en la CRAN, y a su vez verificar cuales de ellos se encuentran instalados y disponibles para su uso, empleamos los comandos:</li>
+<li>Para conocer la totalidad de paquetes que se encuentran albergados en la CRAN, y a su vez verificar cuales de ellos se encuentran <strong>instalados y disponibles</strong> para su uso, empleamos los comandos:</li>
 </ul>
 
 <pre class = 'prettyprint lang-r'># paquetes instalados
@@ -277,9 +284,12 @@ installed.packages()
 # paquetes disponibles
 available.packages()</pre>
 
-</article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Instalando paquetes </font> </b></h2></hgroup><article  id="instalando-paquetes-2" class="smaller ">
+</article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Cargando paquetes </font> </b></h2></hgroup><article  id="cargando-paquetes" class="smaller ">
 
-<p>Para conocer los paquetes cargados en el área de trabajo utilizamos:</p>
+<ul>
+<li><p>Una vez instalado el paquete, se debe proceder a cargarlo en el área de trabajo, para poder utilizar las funciones en él implementadas, para ello utilizamos:</p></li>
+<li><p>Para conocer los paquetes cargados actualmente utilizamos:</p></li>
+</ul>
 
 <pre class = 'prettyprint lang-r'>sessionInfo()</pre>
 
@@ -299,27 +309,34 @@ available.packages()</pre>
 ## [5] knitr_1.6        rmarkdown_0.2.68 stringr_0.6.2    tools_3.1.1     
 ## [9] yaml_2.1.13</pre>
 
-</article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Cargando paquetes </font> </b></h2></hgroup><article  id="cargando-paquetes" class="smaller ">
-
-<ul>
-<li>Una vez instalado el paquete, se debe proceder a cargarlo en el área de trabajo, para poder utilizar las funciones en él implementadas, para ello utilizamos:</li>
-</ul>
-
-<pre class = 'prettyprint lang-r'>library(&quot;ggplot2&quot;)</pre>
-
-<ul>
-<li>Para visualizar el listado de paquetes cargados en el área de trabajo se utiliza:</li>
-</ul>
+</article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Cargando paquetes </font> </b></h2></hgroup><article  id="cargando-paquetes-1" class="smaller ">
 
 <pre class = 'prettyprint lang-r'># paquetes cargados
 (.packages())</pre>
 
-<pre >## [1] &quot;ggplot2&quot;   &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
+<pre >## [1] &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot;  &quot;methods&quot;  
+## [7] &quot;base&quot;</pre>
+
+<ul>
+<li>Para cargar un paquete nuevo al área de trabajo utilizamos la función <code>library()</code>:</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>library(&quot;devtools&quot;)</pre>
+
+<pre class = 'prettyprint lang-r'>paquetes &lt;- c(&quot;foreign&quot;, &quot;forecast&quot;, &quot;gWidgets&quot;)
+sapply(X=paquetes, FUN=library,character.only=TRUE)</pre>
+
+<pre class = 'prettyprint lang-r'># paquetes cargados
+(.packages())</pre>
+
+<pre >## [1] &quot;devtools&quot;  &quot;stats&quot;     &quot;graphics&quot;  &quot;grDevices&quot; &quot;utils&quot;     &quot;datasets&quot; 
 ## [7] &quot;methods&quot;   &quot;base&quot;</pre>
 
 </article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Git &amp; Github </font> </b></h2></hgroup><article  id="git-github" class="smaller ">
 
-<p>GitHub es un repositorio de archivos y proyectos el cual emplea un sistema de control de versiones conocido como Git y permite almacenar el código en repositorios de forma pública.</p>
+<ul>
+<li>GitHub es un repositorio de archivos y proyectos que emplea un sistema de control de versiones conocido como Git y permite almacenar el código en repositorios de forma pública.</li>
+</ul>
 
 <p align="center"> 
 
@@ -328,15 +345,16 @@ available.packages()</pre>
 </p>
 
 
-
-<p>La instalación y sincronización de Git &amp; Github con RStudio se realiza de la siguiente manera:</p>
+<ul>
+<li>La instalación y sincronización de Git &amp; Github con RStudio se realiza mediante:
 
 <ul>
 <li>Descargar e instalar la plataforma específica de <a href='http://www.git-scm.com/' title=''>Git</a> con las opciones por default.</li>
 <li>Configurar Git con los comandos globales a través de la versión bash, esto permitirá que Git tenga conexión con los repositorios de Github para el envió/recepción de archivos, teclear lo siguiente:</li>
+</ul></li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>  git config --global user.name &quot;nombre de la cuenta de Github&quot;
+<pre class = 'prettyprint lang-r'>  git config --global user.name &quot;Usuario de Github&quot;
 
   git config --global user.email &quot;Github-email@something.com&quot;</pre>
 
@@ -372,34 +390,34 @@ available.packages()</pre>
 </tr>
 </table>
 
-<pre >R no tiene estructuras 0d, los números y strings se consideran como vectores de longitud 1</pre>
+<p></p>
 
-<p>La función <code>str()</code> (structure) presenta una descripción compacta de la estructura de datos.</p>
-
-<pre class = 'prettyprint lang-r'>str(cars)</pre>
-
-<pre >## &#39;data.frame&#39;:    50 obs. of  2 variables:
-##  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...
-##  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</pre>
+<ul>
+<li><strong>Observación.</strong> R no tiene estructuras 0d (magnitudes escalares), los números y strings se consideran como vectores de longitud 1</li>
+</ul>
 
 </article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Vectores </font> </b></h2></hgroup><article  id="vectores" class="smaller ">
 
-<p>La estructura de datos básica de R son los vectores, estos se dividen en:</p>
+<ul>
+<li>La estructura de datos básica de R son los vectores, estos se dividen en:
 
 <ul>
 <li><strong>Vectores atómicos y Listas</strong></li>
-</ul>
+</ul></li>
+<li>Presentan tres propiedades comunes:
 
-<p>y presentan tres propiedades comunes:</p>
-
-<ol>
+<ul>
 <li>Tipo (Qué es?). <code>typeof()</code></li>
 <li>Longitud (Número de elementos) <code>length()</code></li>
 <li>Atributos (Metadata). <code>attributes()</code></li>
-</ol>
+</ul></li>
+<li>Para probar que una estructura de datos es un vector (atómico o lista) se utiliza la función:</li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>is.vector(x)</pre>
 
 <ul>
-<li>Para probar que una estructura de datos es un vector (con un solo atributo <strong>names</strong>) se utiliza la función <code>is.vector()</code>.</li>
+<li><code>is.vector(x)</code> retorna <code>TRUE</code> si <code>x</code> es un vector atómico o una lista.</li>
 </ul>
 
 </article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Vectores atómicos </font> </b></h2></hgroup><article  id="vectores-atomicos" class="smaller ">
@@ -618,7 +636,17 @@ x[4]</pre>
 <li>Cuál es la diferencia entre un vector y una lista ?. Entre una matriz y un data frame ?.</li>
 <li>Cuál es la jerarquía de coerción para los vectores ?.</li>
 <li></li>
-</ol></article></slide>
+</ol>
+
+</article></slide><slide class=''><hgroup><h2><b> <font color=SteelBlue face=Cambria size=7> Función structure </font> </b></h2></hgroup><article  id="funcion-structure" class="smaller ">
+
+<p>La función <code>str()</code> (structure) presenta una descripción compacta de la estructura de datos.</p>
+
+<pre class = 'prettyprint lang-r'>str(cars)</pre>
+
+<pre >## &#39;data.frame&#39;:    50 obs. of  2 variables:
+##  $ speed: num  4 4 7 7 8 9 10 10 10 11 ...
+##  $ dist : num  2 10 4 22 16 10 18 26 34 17 ...</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
