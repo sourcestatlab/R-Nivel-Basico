@@ -122,7 +122,7 @@ Inicio: Sadado 16 de Mayo, 2015
 19&Karen Calva\\ \hline
 20&Luis Alonso Erazo\\ \hline
 \end{tabular}
-\caption{Lista GRUPO 01}
+\caption{Lista final GRUPO 01}
 \end{table}
 
 \end{document}
