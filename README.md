@@ -10,7 +10,7 @@ El curso de R Nivel Básico tiene como objetivo principal proporcionar al estudi
 - Instalación & Actualización
 - Interfaces de usuario
 - Estructura de datos
-- Lestura y escritura de datos
+- Lectura y escritura de datos
 - Funciones
 
 _Source Stat Lab_
