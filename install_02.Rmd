@@ -1,0 +1,358 @@
+---
+title: Instalación & Actualización
+subtitle: R Nivel Básico
+author: Source Stat Lab
+date: Mayo, 2015
+widgets: [bootstrap, quiz]
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+mode        : selfcontained # {standalone, draft}
+output:
+  ioslides_presentation:
+    theme: cerulean
+    logo: logo_only.jpeg
+    smaller: yes
+    transition: faster
+    widescreen: yes
+    slidy_presentation: default
+---
+
+## Descargando R
+
+La descarga del programa R se describe en los siguientes pasos:
+
+- Accedemos a la página web del R Project a través de un navegador tecleando la dirección: http://www.r-project.org.
+
+<p align="center"> <img src="images/install1.jpeg" border="0" width="450" height="290"> </p>
+
+- Ingresamos a la CRAN para elegir un repositorio cercano a nuestra localidad. En nuestro caso seleccionamos el repositorio de la Escuela Politécnica de Litoral.
+
+## Descargando R
+
+- Nos dirigimos a la parte superior de la página, y nos ubicamos en _Download and install R_ seguido elegimos el sistema operativo. Para nuestro caso hacemos click en _Windows_.
+
+<p align="center"> <img src="images/install3.jpeg" border="0" width="350" height="170"> </p>
+
+- Elegimos entre los 3 subdirectorios: _base_, _contrib_ y _RTools_. Damos click sobre _base_.
+
+<p align="center"> <img src="images/install4.jpeg" border="0" width="350" height="170"> </p>
+
+## Descargando R
+
+- Finalmente, en la pantalla damos click sobre _Download R X.Y.Z for Windows_, con lo cual descargamos la versión de R más reciente.
+
+<p align="center"> <img src="images/install5.jpeg" border="0" width="480" height="200"> </p>
+
+En la actualidad, el software R puede ser instalado incluso sobre la plataforma Android https://play.google.com/store/apps/details?id=com.appsopensource.R&hl=es_419, esto permite que muchos usuarios puedan tener acceso al programa en todo momento con tan sólo contar con un smartphone operativo.
+
+## Instalando R
+
+Una vez obtenido el programa ejecutable procedemos a dar doble click.
+
+- Seleccionamos el idioma para la instalación
+
+<p align="center"> <img src="images/fig1.jpeg" border="0" width="200" height="150"> 
+<img src="images/fig2.jpeg" border="0" width="200" height="150"> 
+<img src="images/fig3.jpeg" border="0" width="200" height="150">
+<img src="images/fig4.jpeg" border="0" width="200" height="150"> </p>
+
+- Aceptamos todo por default
+
+<p align="center"> <img src="images/fig5.jpeg" border="0" width="200" height="150"> 
+<img src="images/fig6.jpeg" border="0" width="200" height="150"> 
+<img src="images/fig7.jpeg" border="0" width="200" height="150">
+<img src="images/fig8.jpeg" border="0" width="200" height="180"> </p>
+
+## Instalando R
+
+- Para el acceso a la CRAN desde redes con seguridad colocamos en: __Internet 2__.
+
+<p align="center"> <img src="images/fig9.jpeg" border="0" width="230" height="170"> 
+<img src="images/fig10.jpeg" border="0" width="230" height="170"> 
+<img src="images/fig11.jpeg" border="0" width="230" height="170"> </p>
+
+- Finalmente, esperamos que se instale el programa.
+
+<p align="center"> <img src="images/fig12.jpeg" border="0" width="270" height="190"> </p>
+
+## Repositorios
+
+Las capacidades de R pueden ser ampliadas fácilmente mediante la incorporación de paquetes que se encuentran disponibles en varios repositorios, tales como:
+
+- CRAN
+- BioConductor
+- Github
+- Omegahat
+- MRAN
+- RForge
+
+#### METÁFORA:
+Imaginemos que tener instalado el programa en el computador es como haber adquirido un auto nuevo el cual cumple con ciertas funciones principales y no trae contratiempos, una vez que lo empezamos a rodar nos vamos dando cuenta de la necesidad de mejorar el rendimiento de ciertos mecanismos ya existentes del auto debido que lo vamos exponiendo a diferentes ambientes y condiciones. Lo anterior pasa exactamente con R, cuando  descargamos e instalamos el sotfware contamos con ciertas características y paquetes básicos pero existen miles de paquetes adicionales que pueden ser agregados para lograr mejorar su funcionalidad y a la vez realizar cosas estupendas.
+
+## Paquetes estándar
+
+El programa R incluye 8 bibliotecas o paquetes estándar, mismos que pueden ser visualizados a través del siguiente comando:
+
+```{r, results='hold'}
+search()
+```
+
+Las librerías mantienen un orden dentro de R para la búsqueda de funciones.
+
+<p align="center"> <img src="images/pckgs.jpeg" border="0" width="450" height="210"> </p>
+
+## Instalación de paquetes
+### Repositorio CRAN
+
+La instalación de paquetes en R desde el repositorio CRAN es sencillo, una vez conocido el nombre del paquete a instalarse basta con introducir el siguiente comando en la consola:
+```{r, results='hold', eval=FALSE}
+install.packages("nombre_paquete")
+```
+Ciertos paquetes de R requieren la instalación de otros paquetes adicionales debido que entre estos comparten algunas funciones (\emph{paquetes sugeridos}) para evitar tener inconvenientes con la instalación de un paquete se aconseja adicionar el parametro siguiente: 
+```{r, results='hold', eval=FALSE}
+install.packages("nombre_paquete", dependencies=TRUE)
+```
+
+En el caso que se desee instalar un lista de $n$ paquetes planteamos la siguiente solución:
+```{r, results='hold', eval=FALSE}
+paquetes <- c("pckg_1","pckg_2", ... , "pckg_n")
+lapply(seq_along(paquetes), function(i){
+      install.packages(paquetes[[i]], dependencies=TRUE)
+      })
+```
+
+## Instalación de paquetes
+### Repositorios externos
+
+Habiamos comentado sobre la existencia de varios repositorios adicionales al CRAN de entre los cuales destacan R-Forge, BioConductor y Omegahat, dentro de estos repositorios se pueden encontrar paquetes que no se encuentran en el CRAN, o bien, versiones más actualizadas de los mismos.
+
+Para instalar los paquetes desde los repositorios externos antes mencionados basta la siguiente sentencia:
+
+```{r, results='hold', eval=FALSE}
+install.packages("pckgname", repos="http://r-forge.r-project.org")
+install.packages("pckgname", repos="http://www.omegahat.org/R")
+install.packages("pckgname", repos="http://www.bioconductor.org/
+                                    packages/2.10/bioc")
+```
+
+Algunos de los paquetes se encuentran en formato binario, para su instalación basta adicionar el parámetro _type="source"_.
+
+```{r, results='hold', eval=FALSE}
+install.packages("pckgname", repos="http://r-forge.r-project.org", type="source")
+```
+
+## Instalación de paquetes
+### Repositorios Github
+
+En la actualidad gran cantidad de usuarios R han alojado sus proyectos en el sistema de control de versiones GitHub, Inc. por lo cual se hace necesario contar con una solución al momento de instalar algún paquete alojado en dicho sistema.
+
+```{r, results='hold', eval=FALSE}
+install.packages('devtools', dependencies=TRUE)
+devtools::install_github("rstudio/rmarkdown")
+```
+
+Iniciamos instalando el paquete _devtools_ el cual nos provee la función _install-github_, esta última es la encargada de acceder al sistema Github e instalar el paquete deseado, para esta ocasión hemos seleccionado el paquete _rmarkdown_ alojado en el repositorio del proyecto _rstudio_.
+
+<p align="center"> <img src="images/rmark.jpeg" border="0" width="450" height="210"> </p>
+
+## Cargando paquetes
+
+Una vez instalado un paquete el paso siguiente consiste en cargar las funciones y datos del mismo dentro del área de trabajo, para esto tenemos dos comandos útiles: __library( )__ y __require( )__, sin embargo lo más recomendable es utilizar el primero de ellos como se detalla a continuación:
+
+```{r, results='asis', error=TRUE, warning=TRUE}
+library('translate2R')
+require('translate2R')
+```
+
+Una solución para usar __require( )__ consiste en añadir el parámetro __quietly = TRUE__.
+
+## Paquetes instalados
+
+Para visualizar el listado completo de los paquetes instalados podemos recurrir al comando __library( )__. Además, si deseamos conocer el lugar en el cual se instalan los paquetes podemos hacer lo siguiente:
+```{r, results='hold'}
+.libPaths()
+```
+Conocer la totalidad de paquetes que se encuentran albergados en la CRAN, y a su vez verificar cuales de ellos se encuentran válidos y disponibles para su uso es posible mediante los siguientes comandos:
+```{r, results='hold', eval=FALSE}
+installed.packages()
+available.packages()
+```
+En el caso que se requiera conocer los paquetes que se encuentra cargados en el área de trabajo emplearemos el siguiente comando:
+```{r, results='hold', eval=FALSE}
+sessionInfo()
+```
+El comando anterior muestra información acerca de la versión, plataforma, localidad y de los paquetes adjuntos o cargados.
+
+## Información paquetes
+
+En el caso que se requiera información acerca de un paquete previamente instalado podemos recurrir a:
+```{r, results='hold', eval=FALSE}
+library(help='pckgname')
+```
+También podemos enlistar todas las funciones que han sido implementadas dentro de un paquete como muestra el siguiente ejemplo:
+```{r, results='hold', eval=FALSE}
+library(foreign)
+ls('package:foreign')
+```
+Si deseamos conocer los parámetros de cada una de las funciones implementadas dentro de un paquete podemos recurrir a lo siguiente:
+```{r, results='hold', eval=FALSE}
+lsf.str('package:foreign')
+```
+
+Cuando un paquete es empleado dentro de una investigación surge la necesidad de citar a los autores del paquete, lo anterior lo solventamos mediante el comando __citation__.
+```{r, results='hold', eval=FALSE}
+citation("foreign")
+```
+
+## Actualización paquetes
+
+Para enlistar los paquetes que necesitan ser versionados o actualizamos, usamos el comando:
+```{r, results='hold', eval=FALSE}
+update.packages()
+```
+
+en el caso que se tenga más de un paquete, el programa nos preguntará si desea actualizar cada uno de ellos. Con el fin de evitar responder múltiples veces colocamos el parámetro __ask=TRUE__.
+
+Por otro lado, para enlistar los paquetes que no poseen versionamientos tenemos:
+```{r, results='hold', eval=FALSE}
+old.packages()
+```
+
+Los autores de los paquetes pueden ser enlistamos mediante:
+```{r, results='hold', eval=FALSE}
+lapply(dir(R.home("library")), packageDescription)
+```
+
+## Actualización de R
+
+Mantener actualizado R y sus paquetes es relativamente fácil a través del tecleo de los siguientes comandos:
+```{r, results='hold', eval=FALSE}
+install.packages('installr', dependencies = TRUE)
+library('installr')
+updateR()
+```
+
+El paquete __installr__ posee funciones interesantes para actualizar e instalar: R, RStudio, Git, etc.
+```{r, results='hold', eval=FALSE}
+library('installr')
+ls("package:installr")
+```
+
+## Eliminación
+
+Para ocasiones en las cuales se desee eliminar un paquete previamente instalado en R tenemos dos alternativas: la primera consiste básicamente en eliminar la carpeta que contiene dicho paquete del repositorio del computador mientras que la segunda alternativa consiste en emplear el siguiente comando:
+```{r, results='hold', eval=FALSE}
+remove.packages("nombre_paquete", "directorio")
+```
+donde: 
+
+- __nombre-paquete:__ Nombre o vector de nombres de los paquetes ha ser eliminados.
+- __directorio:__ Es un vector de caracteres que proporcionan la dirección del directorio del cual se eliminará el paquete. Si se omite dicho parámetro se asume por default la dirección obtenida por __.libPaths()__.
+
+## Obteniendo ayuda
+
+Existen algunas funciones en R que nos facilitan la vida al momento de indagar sobre la funcionalidad de ciertos comandos:
+
+Por ejemplo, si nos encontramos interesados en obtener información acerca de la función __seq__ podemos escribir en la consola lo siguiente:
+```{r, results='hold', eval=FALSE}
+help(seq)
+```
+
+Una forma alternativa es
+```{r, results='hold', eval=FALSE}
+?seq
+```
+
+Adicionalmente, si nos encontramos interesados en buscar información relacionada a un término en específico:
+```{r, results='hold', eval=FALSE}
+help.search("termino_especifico")
+```
+
+En el caso de requerir un manual de ayuda completo en formato HMTL, tecleamos en la consola lo siguiente:
+```{r, results='hold', eval=FALSE}
+help.start()
+```
+
+## Obteniendo ayuda
+
+Por último, existen circunstancias en las cuales se hace indispensable conocer todas las funciones relacionadas a un nombre en específico. 
+
+Primero mostramos un ejemplo en el cual se obtienen todas las funciones relacionadas con el término __mean__.
+```{r, results='hold', eval=TRUE}
+apropos("mean")
+```
+
+Ahora enlistamos las funciones que tiene un número entre el 4 y 8.
+```{r, results='hold', eval=TRUE}
+apropos("[4-8]")
+```
+
+## Obteniendo ayuda
+
+Finalmente, obtenemos todas las funciones que poseen la letra w en sus nombres.
+```{r, results='hold', eval=TRUE}
+apropos("w$")
+```
+
+## Ejemplos
+
+La mayoría de funciones incluyen ejemplos que pueden ser ejecutados y facilitan al usuario comprender de mejor manera su uso.
+
+```{r, results='hold', eval=TRUE}
+example(mean)
+example(sd)
+```
+
+## Git & Github
+
+Git es un sistema de control de versiones muy utilizado para el desarrollo de software.
+
+Github es un sitio web que almacena y permite compartir el código con usuarios de todo el mundo.
+
+### Ventajas
+
+- Permite compartir archivos y código de forma simple y fácil.
+- Cualquier usuario puede instalar los paquetes que se encuentran hospedados en Github tan solo con dos líneas de código.
+
+```{r, results='hold', eval=FALSE}
+install.packages("devtools")
+devtools::install_github("username/packagename")
+```
+
+- Facilidad que varios usuarios trabajen en un mismo proyecto y se almacenen los diferentes cambios.
+
+## Instalación de Git
+
+- Configuración e instalación de Git.
+
+<p align="center"> <img src="images/git1.jpeg" border="0" width="270" height="190"> 
+<img src="images/git2.jpeg" border="0" width="270" height="190"> 
+</p>
+
+- Enlazamos Git con Github.
+
+<p align="center"> <img src="images/git3.jpeg" border="0" width="270" height="190"> 
+<img src="images/git4.jpeg" border="0" width="270" height="190"> 
+</p>
+
+## Configuramos Github
+
+- Por último, enlazamos la cuenta de Github.
+
+<p align="center"> <img src="images/git5.jpeg" border="0" width="500" height="150"> </p>
+
+
+## Revolution Analytics
+
+- Fundada en el año 2007 con la finalidad de dar soporte comercial al software __Revolution R__.
+- Provee componentes tales como: ParallelR, RevoScaleR, RevoDeployR, etc.
+
+<p align="center"> <img src="images/rro.jpeg" border="0" width="240" height="220"> </p>
+
+- Modificaron el código fuente de R, lo cual ha permitido que R sea multicore, es decir, a través de estas modificaciones se logra aprovechar al máximo la funcionalidad de todos los núcleos de los procesadores del computador.
+- Puede ser obtenido a través de la página web http://www.revolutionanalytics.com como __Revolution R Open__ de forma gratuita, sin embargo en el caso de requerir soporte se puede adquirir la versión pagada __Revolution R Enterprise__.
+
+## Preguntas 
+
+<p align="center"> <img src="images/preguntas.jpeg" border="0" width="380" height="360"> </p>
