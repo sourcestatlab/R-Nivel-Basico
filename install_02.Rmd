@@ -14,7 +14,7 @@ output:
     logo: logo_only.jpeg
     smaller: yes
     transition: faster
-    widescreen: yes
+    widescreen: no
     slidy_presentation: default
 ---
 
@@ -22,57 +22,57 @@ output:
 
 La descarga del programa R se describe en los siguientes pasos:
 
-- Accedemos a la página web del R Project a través de un navegador tecleando la dirección: http://www.r-project.org.
+> - Accedemos a la página web del R Project a través de un navegador tecleando la dirección: http://www.r-project.org.
 
 <p align="center"> <img src="images/install1.jpeg" border="0" width="450" height="290"> </p>
 
-- Ingresamos a la CRAN para elegir un repositorio cercano a nuestra localidad. En nuestro caso seleccionamos el repositorio de la Escuela Politécnica de Litoral.
+> - Ingresamos a la CRAN para elegir un repositorio cercano a nuestra localidad. En nuestro caso seleccionamos el repositorio de la Escuela Politécnica de Litoral.
 
 ## Descargando R
 
-- Nos dirigimos a la parte superior de la página, y nos ubicamos en _Download and install R_ seguido elegimos el sistema operativo. Para nuestro caso hacemos click en _Windows_.
+> - Nos dirigimos a la parte superior de la página, y nos ubicamos en _Download and install R_ seguido elegimos el sistema operativo. Para nuestro caso hacemos click en _Windows_.
 
-<p align="center"> <img src="images/install3.jpeg" border="0" width="350" height="170"> </p>
+<p align="center"> <img src="images/install3.jpeg" border="0" width="350" height="160"> </p>
 
-- Elegimos entre los 3 subdirectorios: _base_, _contrib_ y _RTools_. Damos click sobre _base_.
+> - Elegimos entre los 3 subdirectorios: _base_, _contrib_ y _RTools_. Damos click sobre _base_.
 
-<p align="center"> <img src="images/install4.jpeg" border="0" width="350" height="170"> </p>
+<p align="center"> <img src="images/install4.jpeg" border="0" width="350" height="160"> </p>
 
 ## Descargando R
 
-- Finalmente, en la pantalla damos click sobre _Download R X.Y.Z for Windows_, con lo cual descargamos la versión de R más reciente.
+> - Finalmente, en la pantalla damos click sobre _Download R X.Y.Z for Windows_, con lo cual descargamos la versión de R más reciente.
 
 <p align="center"> <img src="images/install5.jpeg" border="0" width="480" height="200"> </p>
 
-En la actualidad, el software R puede ser instalado incluso sobre la plataforma Android https://play.google.com/store/apps/details?id=com.appsopensource.R&hl=es_419, esto permite que muchos usuarios puedan tener acceso al programa en todo momento con tan sólo contar con un smartphone operativo.
+> - En la actualidad, el software R puede ser instalado incluso sobre la plataforma Android https://play.google.com/store/apps/details?id=com.appsopensource.R&hl=es_419, esto permite que muchos usuarios puedan tener acceso al programa en todo momento con tan sólo contar con un smartphone operativo.
 
 ## Instalando R
 
 Una vez obtenido el programa ejecutable procedemos a dar doble click.
 
-- Seleccionamos el idioma para la instalación
+> - Seleccionamos el idioma para la instalación
 
-<p align="center"> <img src="images/fig1.jpeg" border="0" width="200" height="150"> 
-<img src="images/fig2.jpeg" border="0" width="200" height="150"> 
-<img src="images/fig3.jpeg" border="0" width="200" height="150">
-<img src="images/fig4.jpeg" border="0" width="200" height="150"> </p>
+<p align="center"> <img src="images/fig1.jpeg" border="0" width="190" height="150"> 
+<img src="images/fig2.jpeg" border="0" width="190" height="150"> 
+<img src="images/fig3.jpeg" border="0" width="190" height="150">
+<img src="images/fig4.jpeg" border="0" width="190" height="150"> </p>
 
-- Aceptamos todo por default
+> - Aceptamos todo por default
 
-<p align="center"> <img src="images/fig5.jpeg" border="0" width="200" height="150"> 
-<img src="images/fig6.jpeg" border="0" width="200" height="150"> 
-<img src="images/fig7.jpeg" border="0" width="200" height="150">
-<img src="images/fig8.jpeg" border="0" width="200" height="180"> </p>
+<p align="center"> <img src="images/fig5.jpeg" border="0" width="190" height="150"> 
+<img src="images/fig6.jpeg" border="0" width="190" height="150"> 
+<img src="images/fig7.jpeg" border="0" width="190" height="150">
+<img src="images/fig8.jpeg" border="0" width="190" height="180"> </p>
 
 ## Instalando R
 
-- Para el acceso a la CRAN desde redes con seguridad colocamos en: __Internet 2__.
+> - Para el acceso a la CRAN desde redes con seguridad colocamos en: __Internet 2__.
 
 <p align="center"> <img src="images/fig9.jpeg" border="0" width="230" height="170"> 
 <img src="images/fig10.jpeg" border="0" width="230" height="170"> 
 <img src="images/fig11.jpeg" border="0" width="230" height="170"> </p>
 
-- Finalmente, esperamos que se instale el programa.
+> - Finalmente, esperamos que se instale el programa.
 
 <p align="center"> <img src="images/fig12.jpeg" border="0" width="270" height="190"> </p>
 
@@ -80,15 +80,15 @@ Una vez obtenido el programa ejecutable procedemos a dar doble click.
 
 Las capacidades de R pueden ser ampliadas fácilmente mediante la incorporación de paquetes que se encuentran disponibles en varios repositorios, tales como:
 
-- CRAN
-- BioConductor
-- Github
-- Omegahat
-- MRAN
-- RForge
+> - CRAN
+> - BioConductor
+> - Github
+> - Omegahat
+> - MRAN
+> - RForge
 
 #### METÁFORA:
-Imaginemos que tener instalado el programa en el computador es como haber adquirido un auto nuevo el cual cumple con ciertas funciones principales y no trae contratiempos, una vez que lo empezamos a rodar nos vamos dando cuenta de la necesidad de mejorar el rendimiento de ciertos mecanismos ya existentes del auto debido que lo vamos exponiendo a diferentes ambientes y condiciones. Lo anterior pasa exactamente con R, cuando  descargamos e instalamos el sotfware contamos con ciertas características y paquetes básicos pero existen miles de paquetes adicionales que pueden ser agregados para lograr mejorar su funcionalidad y a la vez realizar cosas estupendas.
+Imaginemos que hemos adquirido un auto el cual cumple con ciertas funciones principales y no trae contratiempos, una vez que lo empezamos a rodar nos vamos dando cuenta de la necesidad de mejorar el rendimiento de ciertos mecanismos ya existentes del auto debido que lo vamos exponiendo a diferentes ambientes y condiciones. Lo anterior pasa exactamente con R, cuando  descargamos e instalamos el sotfware contamos con ciertas características y paquetes básicos pero existen miles de paquetes adicionales que pueden ser agregados para lograr mejorar su funcionalidad y a la vez realizar cosas estupendas.
 
 ## Paquetes estándar
 
@@ -105,11 +105,11 @@ Las librerías mantienen un orden dentro de R para la búsqueda de funciones.
 ## Instalación de paquetes
 ### Repositorio CRAN
 
-La instalación de paquetes en R desde el repositorio CRAN es sencillo, una vez conocido el nombre del paquete a instalarse basta con introducir el siguiente comando en la consola:
+Una vez conocido el nombre del paquete a instalarse basta con introducir el siguiente comando en la consola:
 ```{r, results='hold', eval=FALSE}
 install.packages("nombre_paquete")
 ```
-Ciertos paquetes de R requieren la instalación de otros paquetes adicionales debido que entre estos comparten algunas funciones (\emph{paquetes sugeridos}) para evitar tener inconvenientes con la instalación de un paquete se aconseja adicionar el parametro siguiente: 
+Ciertos paquetes de R requieren la instalación de otros paquetes adicionales debido que entre estos comparten algunas funciones, para evitar tener inconvenientes con la instalación de un paquete se aconseja adicionar: 
 ```{r, results='hold', eval=FALSE}
 install.packages("nombre_paquete", dependencies=TRUE)
 ```
@@ -152,8 +152,6 @@ install.packages('devtools', dependencies=TRUE)
 devtools::install_github("rstudio/rmarkdown")
 ```
 
-Iniciamos instalando el paquete _devtools_ el cual nos provee la función _install-github_, esta última es la encargada de acceder al sistema Github e instalar el paquete deseado, para esta ocasión hemos seleccionado el paquete _rmarkdown_ alojado en el repositorio del proyecto _rstudio_.
-
 <p align="center"> <img src="images/rmark.jpeg" border="0" width="450" height="210"> </p>
 
 ## Cargando paquetes
@@ -169,11 +167,11 @@ Una solución para usar __require( )__ consiste en añadir el parámetro __quiet
 
 ## Paquetes instalados
 
-Para visualizar el listado completo de los paquetes instalados podemos recurrir al comando __library( )__. Además, si deseamos conocer el lugar en el cual se instalan los paquetes podemos hacer lo siguiente:
+El listado completo de los paquetes instalados lo visualizamos tecleando __library( )__. Si deseamos conocer el lugar en el cual se instalan los paquetes usamos:
 ```{r, results='hold'}
 .libPaths()
 ```
-Conocer la totalidad de paquetes que se encuentran albergados en la CRAN, y a su vez verificar cuales de ellos se encuentran válidos y disponibles para su uso es posible mediante los siguientes comandos:
+Conocer la totalidad de paquetes que se encuentran albergados en la CRAN, y a su vez verificar cuales de ellos se encuentran válidos y disponibles para su uso es posible mediante:
 ```{r, results='hold', eval=FALSE}
 installed.packages()
 available.packages()
@@ -190,7 +188,7 @@ En el caso que se requiera información acerca de un paquete previamente instala
 ```{r, results='hold', eval=FALSE}
 library(help='pckgname')
 ```
-También podemos enlistar todas las funciones que han sido implementadas dentro de un paquete como muestra el siguiente ejemplo:
+Podemos enlistar todas las funciones que han sido implementadas dentro de un paquete, por ejemplo:
 ```{r, results='hold', eval=FALSE}
 library(foreign)
 ls('package:foreign')
@@ -254,7 +252,6 @@ donde:
 
 Existen algunas funciones en R que nos facilitan la vida al momento de indagar sobre la funcionalidad de ciertos comandos:
 
-Por ejemplo, si nos encontramos interesados en obtener información acerca de la función __seq__ podemos escribir en la consola lo siguiente:
 ```{r, results='hold', eval=FALSE}
 help(seq)
 ```
@@ -312,25 +309,25 @@ Github es un sitio web que almacena y permite compartir el código con usuarios 
 
 ### Ventajas
 
-- Permite compartir archivos y código de forma simple y fácil.
-- Cualquier usuario puede instalar los paquetes que se encuentran hospedados en Github tan solo con dos líneas de código.
+> - Permite compartir archivos y código de forma simple y fácil.
+> - Cualquier usuario puede instalar los paquetes que se encuentran hospedados en Github tan solo con dos líneas de código.
 
 ```{r, results='hold', eval=FALSE}
 install.packages("devtools")
 devtools::install_github("username/packagename")
 ```
 
-- Facilidad que varios usuarios trabajen en un mismo proyecto y se almacenen los diferentes cambios.
+> - Facilidad que varios usuarios trabajen en un mismo proyecto y se almacenen los diferentes cambios.
 
 ## Instalación de Git
 
-- Configuración e instalación de Git.
+> - Configuración e instalación de Git.
 
 <p align="center"> <img src="images/git1.jpeg" border="0" width="270" height="190"> 
 <img src="images/git2.jpeg" border="0" width="270" height="190"> 
 </p>
 
-- Enlazamos Git con Github.
+> - Enlazamos Git con Github.
 
 <p align="center"> <img src="images/git3.jpeg" border="0" width="270" height="190"> 
 <img src="images/git4.jpeg" border="0" width="270" height="190"> 
@@ -338,20 +335,20 @@ devtools::install_github("username/packagename")
 
 ## Configuramos Github
 
-- Por último, enlazamos la cuenta de Github.
+> - Por último, enlazamos la cuenta de Github.
 
 <p align="center"> <img src="images/git5.jpeg" border="0" width="500" height="150"> </p>
 
 
 ## Revolution Analytics
 
-- Fundada en el año 2007 con la finalidad de dar soporte comercial al software __Revolution R__.
-- Provee componentes tales como: ParallelR, RevoScaleR, RevoDeployR, etc.
+> - Fundada en el año 2007 con la finalidad de dar soporte comercial al software __Revolution R__.
+> - Provee componentes tales como: ParallelR, RevoScaleR, RevoDeployR, etc.
 
-<p align="center"> <img src="images/rro.jpeg" border="0" width="240" height="220"> </p>
+<p align="center"> <img src="images/rro.jpeg" border="0" width="220" height="200"> </p>
 
-- Modificaron el código fuente de R, lo cual ha permitido que R sea multicore, es decir, a través de estas modificaciones se logra aprovechar al máximo la funcionalidad de todos los núcleos de los procesadores del computador.
-- Puede ser obtenido a través de la página web http://www.revolutionanalytics.com como __Revolution R Open__ de forma gratuita, sin embargo en el caso de requerir soporte se puede adquirir la versión pagada __Revolution R Enterprise__.
+> - Modificaron el código fuente de R, lo cual ha permitido que R sea multicore, es decir, a través de estas modificaciones se logra aprovechar al máximo la funcionalidad de todos los núcleos de los procesadores del computador.
+> - Puede descargarse desde http://www.revolutionanalytics.com como __Revolution R Open__ de forma gratuita, sin embargo en el caso de requerir soporte se puede adquirir la versión pagada __Revolution R Enterprise__.
 
 ## Preguntas 
 
