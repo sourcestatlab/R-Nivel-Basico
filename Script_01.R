@@ -37,7 +37,6 @@ require('translate2R')
 .libPaths()
 
 ## Actualización de librerias
-
 # Paquetes instalados
 installed.packages()
 
@@ -76,7 +75,6 @@ updateR()
 ls("package:installr")
 
 ## Instalación de R & RStudio
-
 install.packages("installr", dependencies=TRUE)
 library(installr)
 install.RStudio()
