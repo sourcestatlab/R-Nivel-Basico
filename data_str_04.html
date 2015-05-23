@@ -157,8 +157,8 @@ x</pre>
 
 <pre >## [1] 5</pre>
 
-<pre class = 'prettyprint lang-r'>x &lt;- &quot;SSL&quot;
-x</pre>
+<pre class = 'prettyprint lang-r'>y &lt;- &quot;SSL&quot;
+y</pre>
 
 <pre >## [1] &quot;SSL&quot;</pre>
 
@@ -794,15 +794,15 @@ dim(mtx)</pre>
 ## [2,]    2    5    8   11
 ## [3,]    3    6    9   12</pre>
 
-<pre class = 'prettyprint lang-r'>mtx[1,2] # componente</pre>
+<pre class = 'prettyprint lang-r'>mtx[1,2] # componente 1, 2</pre>
 
 <pre >## [1] 4</pre>
 
-<pre class = 'prettyprint lang-r'>mtx[,3]  # columna</pre>
+<pre class = 'prettyprint lang-r'>mtx[,3]  # columna 3</pre>
 
 <pre >## [1] 7 8 9</pre>
 
-<pre class = 'prettyprint lang-r'>mtx[1,]  # fila</pre>
+<pre class = 'prettyprint lang-r'>mtx[1,]  # fila 1</pre>
 
 <pre >## [1]  1  4  7 10</pre>
 
@@ -1228,8 +1228,8 @@ x</pre>
 
 <pre >## [1] NaN 3.2  NA 5.0  NA</pre>
 
-<pre class = 'prettyprint lang-r'>x &lt;- c(-1, 0/0, NA, 5, -6)
-x</pre>
+<pre class = 'prettyprint lang-r'>y &lt;- c(-1, 0/0, NA, 5, -6)
+y</pre>
 
 <pre >## [1]  -1 NaN  NA   5  -6</pre>
 
@@ -1254,8 +1254,8 @@ is.na(x)</pre>
 <li><code>is.nan(x)</code> retorna <code>TRUE</code> para elementos <code>NaN</code> de un vector atómico.</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>x &lt;- c(-1, 0/0, NA, 5, Inf*0)
-is.nan(x)</pre>
+<pre class = 'prettyprint lang-r'>y &lt;- c(-1, 0/0, NA, 5, Inf*0)
+is.nan(y)</pre>
 
 <pre >## [1] FALSE  TRUE FALSE FALSE  TRUE</pre>
 
