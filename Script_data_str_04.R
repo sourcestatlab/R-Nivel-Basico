@@ -13,7 +13,7 @@ y <- "SSL"
 y
 
 ## Vectores
-## Vectores atómicos
+## 1. Vectores atómicos
 vec <- c(1, 2)
 vec
 
@@ -131,7 +131,7 @@ c(1, c(2, c(3,4)))
 c(1, 2, 3, 4)
 
 
-## Listas
+## 2. Listas
 # Una lista puede contener elementos de cualquier tipo y de distinta longitud. 
 lst <- list(c(1, 2), c(TRUE), c("a", "b", "c"))
 lst
