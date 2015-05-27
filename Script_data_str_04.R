@@ -7,8 +7,8 @@
 
 ## Estructuras de Datos
 # R no tiene estructuras 0d (tipo escalar).
-# El texto luego de `#` es un comentario (no es interpretado por R)
-# Para crear un objeto se utiliza el operador de asignación ` <- `
+# El texto luego de # es un comentario (no es interpretado por R)
+# Para crear un objeto se utiliza el operador de asignación  <- 
 
 x <- 5
 x
@@ -28,7 +28,7 @@ vec <- c(6, 1, 3, 6, 10, 5)
 vec
 vec[5]
 
-# Para seleccionar varios elementos utilizamos la función `c()`.
+# Para seleccionar varios elementos utilizamos la función c().
 vec <- c(6, 1, 3, 6, 10, 5)
 vec
 # elementos de la posición 2, 4, 6
@@ -73,8 +73,8 @@ is.integer(int_vec)
 is.atomic(int_vec)
 
 
-## Función `is.numeric()`.
-# Retorna `TRUE` para vectores double e integer:
+## Función is.numeric().
+# Retorna TRUE para vectores double e integer:
         
 dbl_vec <- c(1, 2, -1.2)
 dbl_vec
@@ -97,7 +97,7 @@ vec1 <- c(0.5, 2, TRUE, FALSE)
 vec1
 typeof(vec1)
 
-# Las funciones `+, abs, log, etc` coercionan a `double o integer`.
+# Las funciones +, abs, log, etc coercionan a double o integer.
 
 # Coerción función abs
 vec <- c(3, 0.5, -6)
@@ -164,7 +164,7 @@ vec <- c(1, 0, 17, 3.5, 0)
 vec1 <- as.logical(vec)
 vec1
 # == 0 -> FALSE
-# != 0` $\rightarrow$ `TRUE`
+# != 0 $\rightarrow$ TRUE
 
 
 ## Vectores anidados
@@ -195,8 +195,8 @@ lst <- list(1:3, c("Source", "Stat", "Lab"), c(TRUE, FALSE), c(1.3, 4.5))
 unlist(lst)
 
 ## Elementos de una lista
-# Para acceder al elemento `i` de la lista se utiliza `x[i]`.
-# Para acceder al objeto que contiene el elemento `i` se utiliza `x[[i]]`.
+# Para acceder al elemento i de la lista se utiliza x[i].
+# Para acceder al objeto que contiene el elemento i se utiliza x[[i]].
 lst <- list(c(1, 2), c(TRUE), c("a", "b", "c"))
 lst
 lst[1]
@@ -238,7 +238,7 @@ attributes(lst)
 
 
 ## Funcion is.vector()
-# `is.vector(x)` retorna `TRUE` si `x` es un vector con un solo atributo (names).
+# is.vector(x) retorna TRUE si x es un vector con un solo atributo (names).
 
 # Vector con el atributo names
 vec <- c(a=3, b=6, c=-1, d=0.5)
@@ -284,13 +284,13 @@ mtx[c(TRUE, FALSE, TRUE),]  # filas 1 y 3
 
 ## Factores
 # Es la estructura de datos utilizada para almacenar variables categóricas.
-# Creación de un factor si se dispone de un vector `integer`
+# Creación de un factor si se dispone de un vector integer
 vec <- c(1, 2, 2, 1, 2, 1, 2)
 vec
 fac <- factor(vec, levels=c(1,2), labels = c("Femenino", "Masculino"))
 fac
 
-# Creación de un factor si se dispone de un vector `character`
+# Creación de un factor si se dispone de un vector character
 vec <- c("Femenino","Masculino","Masculino","Femenino","Masculino",
          "Femenino","Masculino")
 vec
@@ -301,7 +301,7 @@ fac
 fac <- factor(vec, levels= c("Femenino", "Masculino"))
 fac
 
-# Para obtener los atributos de un factor utilizamos `attributes()`.
+# Para obtener los atributos de un factor utilizamos attributes().
 vec <- c(1, 2, 2, 1, 2, 1, 2)
 fac <- factor(vec, levels=c(1,2), labels = c("Femenino", "Masculino"))
 attributes(fac)
@@ -321,7 +321,7 @@ prop.table(table(fac))
 ## Data Frame
 # Es una lista en la cual todos los elementos tienen la misma longitud.
 # A diferencia de las matrices, pueden almacenar vectores atómicos de cualquier tipo.
-# Presenta varios atributos adicionales `class`, `rownames`, `names`.
+# Presenta varios atributos adicionales class, rownames, names.
 # Es la estructura de datos más utilizada para almacenar data tabulada.
 
 dbl_vec <- c(1, 2, 3)
@@ -399,7 +399,7 @@ ncol(mtcars)
 
 
 ## Función structure
-# La función `str()` (structure) presenta una descripción compacta de la estructura de datos. 
+# La función str() (structure) presenta una descripción compacta de la estructura de datos. 
 str(mtcars)
 
 ## Missing Values
