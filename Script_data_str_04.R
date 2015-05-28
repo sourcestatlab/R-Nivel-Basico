@@ -1,11 +1,15 @@
 ###-----------------------------------------------###
 ###----------- Curso R Nivel Básico --------------###
+###-- Estructuras de Datos en R ------------------###
 ###-- Source Stat Lab Ec -------------------------###
 ###-- Mayo, 2015 ---------------------------------###
 ###-----------------------------------------------###
 
 ## Estructuras de Datos
 # R no tiene estructuras 0d (tipo escalar).
+# El texto luego de # es un comentario (no es interpretado por R)
+# Para crear un objeto se utiliza el operador de asignación  <- 
+
 x <- 5
 x
 
@@ -18,15 +22,28 @@ vec <- c(1, 2)
 vec
 
 ## Elementos de un vector atómico
+# La i-ésima componente de un vector se obtiene mediante vec[i]
+
 vec <- c(6, 1, 3, 6, 10, 5)
 vec
 vec[5]
 
+# Para seleccionar varios elementos utilizamos la función c().
 vec <- c(6, 1, 3, 6, 10, 5)
 vec
-
-vec[c(FALSE, TRUE, FALSE, TRUE, FALSE, TRUE)]
+# elementos de la posición 2, 4, 6
 vec[c(2, 4, 6)]
+
+# Eliminamos elementos antecediendo el signo -
+
+vec[-c(2)]
+vec[-c(1, 6)]
+
+# TRUE, FALSE también permiten obtener ciertos elementos:
+vec <- c(6, 1, 3, 6, 10, 5)
+vec
+# elementos de la posición 2, 4, 6
+vec[c(FALSE, TRUE, FALSE, TRUE, FALSE, TRUE)]
 
 ## Tipos de vectores atómicos
 # Vector double
@@ -61,8 +78,8 @@ is.integer(int_vec)
 is.atomic(int_vec)
 
 
-## Función `is.numeric()`.
-# Retorna `TRUE` para vectores double e integer:
+## Función is.numeric().
+# Retorna TRUE para vectores double e integer:
         
 dbl_vec <- c(1, 2, -1.2)
 dbl_vec
@@ -74,7 +91,8 @@ is.numeric(int_vec)
 
 ## Coerción
 # Los elementos de un vector son del mismo tipo
-# jerarquía character<-double<-integer<-logical
+# Si combinamos tipos diferentes, serán coercionados al tipo más flexible dado por la jerarquia
+# character <= double <= integer <= logical
 
 vec <- c("ssl", 12, TRUE, FALSE)
 vec
@@ -84,50 +102,80 @@ vec1 <- c(0.5, 2, TRUE, FALSE)
 vec1
 typeof(vec1)
 
+# Las funciones +, abs, log, etc coercionan a double o integer.
 
-## Coerción de character a integer
-vec <- c("1", "5", "8", "15")
-vec1 <- as.integer(vec)
-vec1
-typeof(vec1)
-
-## Coerción de logical a numeric
-vec <- c(FALSE, TRUE, FALSE, TRUE, TRUE) 
-vec1 <- as.numeric(vec)
-vec1
-# TRUE a 1
-# FALSE a 0
-        
-sum(vec) # número total de TRUEs 
-mean(vec) # proporción de TRUEs
-
-
-## Coerción función abs()
+# Coerción función abs
 vec <- c(3, 0.5, -6)
 vec1 <- abs(vec)
 typeof(vec1)
 
-## Coerción función +
+# Coerción función +
 vec1 <- c(1L, 3L, -6L)
 vec2 <- c(2L, -5L, 9L)
 vec3 <- vec1 + vec2
 typeof(vec3)
 
-
-## Coerción función all()
+# Las funciones &, |, any, all, etc coercionan a logical.
+# Coerción función all
 vec <- c(TRUE, FALSE, FALSE, TRUE)
 (vec1 <- all(vec)) # TRUE si todos sus elementos son TRUE
 typeof(vec1)
 
-## Coerción función |
+# Coerción función | 
 vec1 <- c(FALSE, TRUE, TRUE, FALSE)
 vec2 <- c(TRUE, TRUE, FALSE, FALSE)
 (vec3 <- vec1 | vec2)
 typeof(vec3)
 
+## Coerción - Funciones "as"
+# Para coercionar un vector a un determinado tipo, se utilizan las funciones "as"
+
+# coerción directa: double a character
+vec <- c(1.7, 5, 8.2, 15.1)
+vec1 <- as.character(vec)
+vec1
+typeof(vec1)
+
+# coerción directa: logical a character
+vec <- c(FALSE, TRUE, FALSE, TRUE, TRUE) 
+vec1 <- as.character(vec)
+vec1
+
+# coerción directa: logical a double
+vec <- c(FALSE, TRUE, FALSE, TRUE, TRUE) 
+vec1 <- as.double(vec)
+vec1
+# TRUE -> 1
+# FALSE -> 0
+
+sum(vec) # número total de TRUEs 
+mean(vec) # proporción de TRUEs
+
+
+# coerción indirecta: character a double
+vec <- c("15", "Sin Info", "25", "-")
+vec1 <- as.double(vec)
+vec1
+#NAs introduced by coercion
+
+# coerción indirecta: character a logical
+vec <- c("FALSE", "TRUE", "Sin Info", "-", "TRUE") 
+vec1 <- as.logical(vec)
+vec1
+#NAs introduced by coercion
+
+# coerción indirecta: double a logical
+vec <- c(1, 0, 17, 3.5, 0)
+vec1 <- as.logical(vec)
+vec1
+# == 0 -> FALSE
+# != 0 $\rightarrow$ TRUE
+
+
 ## Vectores anidados
+# Los vectores atómicos pueden ser anidados
 c(1, c(2, c(3,4)))
-# es equvalente a:
+
 c(1, 2, 3, 4)
 
 
@@ -152,8 +200,8 @@ lst <- list(1:3, c("Source", "Stat", "Lab"), c(TRUE, FALSE), c(1.3, 4.5))
 unlist(lst)
 
 ## Elementos de una lista
-# Para acceder al elemento `i` de la lista se utiliza `x[i]`.
-# Para acceder al objeto que contiene el elemento `i` se utiliza `x[[i]]`.
+# Para acceder al elemento i de la lista se utiliza x[i].
+# Para acceder al objeto que contiene el elemento i se utiliza x[[i]].
 lst <- list(c(1, 2), c(TRUE), c("a", "b", "c"))
 lst
 lst[1]
@@ -195,7 +243,7 @@ attributes(lst)
 
 
 ## Funcion is.vector()
-# `is.vector(x)` retorna `TRUE` si `x` es un vector con un solo atributo (names).
+# is.vector(x) retorna TRUE si x es un vector con un solo atributo (names).
 
 # Vector con el atributo names
 vec <- c(a=3, b=6, c=-1, d=0.5)
@@ -240,28 +288,45 @@ mtx[c(TRUE, FALSE, TRUE),]  # filas 1 y 3
 
 
 ## Factores
-# Se usan para representar variables categóricas y se crean mediante `factor()`.
-vec <- c(1,2,2,1,2,1,2)
+# Es la estructura de datos utilizada para almacenar variables categóricas.
+# Creación de un factor si se dispone de un vector integer
+vec <- c(1, 2, 2, 1, 2, 1, 2)
 vec
-
-# Creación de un factor
 fac <- factor(vec, levels=c(1,2), labels = c("Femenino", "Masculino"))
 fac
+
+# Creación de un factor si se dispone de un vector character
+vec <- c("Femenino","Masculino","Masculino","Femenino","Masculino",
+         "Femenino","Masculino")
+vec
+
+fac <- factor(vec, levels= c("Femenino", "Masculino"), labels=c("FEM", "MASC"))
+fac
+# por defecto labels = levels, si no se setea el valor labels= se toma el valor por default
+fac <- factor(vec, levels= c("Femenino", "Masculino"))
+fac
+
+# Para obtener los atributos de un factor utilizamos attributes().
+vec <- c(1, 2, 2, 1, 2, 1, 2)
+fac <- factor(vec, levels=c(1,2), labels = c("Femenino", "Masculino"))
 attributes(fac)
 
-# Para realizar conteos de cada categoría, se utiliza la función `table()`.
-# frecuencias
-table(fac)
-
-# Para considerar el vector entero utilizamos `unclass()`.
-# Eliminación del atributo class
+# Para considerar el vector entero utilizamos unclass().
+# eliminación del atributo class
 unclass(fac)
 
+# Para realizar conteos por categoría, se utiliza la función table().
+vec <- c(1, 2, 2, 1, 2, 1, 2)
+fac <- factor(vec, levels=c(1,2), labels = c("Femenino", "Masculino"))
+# frecuencias
+table(fac)
+# porcentaje
+prop.table(table(fac))
 
 ## Data Frame
 # Es una lista en la cual todos los elementos tienen la misma longitud.
 # A diferencia de las matrices, pueden almacenar vectores atómicos de cualquier tipo.
-# Presenta varios atributos adicionales `class`, `rownames`, `names`.
+# Presenta varios atributos adicionales class, rownames, names.
 # Es la estructura de datos más utilizada para almacenar data tabulada.
 
 dbl_vec <- c(1, 2, 3)
@@ -339,7 +404,7 @@ ncol(mtcars)
 
 
 ## Función structure
-# La función `str()` (structure) presenta una descripción compacta de la estructura de datos. 
+# La función str() (structure) presenta una descripción compacta de la estructura de datos. 
 str(mtcars)
 
 ## Missing Values
