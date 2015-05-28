@@ -31,7 +31,8 @@ vec[5]
 # Para seleccionar varios elementos utilizamos la función c().
 vec <- c(6, 1, 3, 6, 10, 5)
 vec
-# elementos de la posición 2, 4, 6
+
+# Elementos de la posición 2, 4, 6
 vec[c(2, 4, 6)]
 
 # Eliminamos elementos antecediendo el signo -
