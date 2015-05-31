@@ -1,5 +1,11 @@
+## Ejercicio en clase ##
+
+# Cargamos la data
+data(mtcars)
+mtcars
+
+# Revisamos la estructura de la data
 str(mtcars)
-mtcars$am
 
 0) Crear una variable factor usando am, donde 1=USED y 0= NEW. Calcular el número de casos y porcentaje del factor.
 
