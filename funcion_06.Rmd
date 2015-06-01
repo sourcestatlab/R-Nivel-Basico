@@ -26,6 +26,7 @@ Ahora abordaremos el diseño y la construcción de funciones propias del usuario
 
 Una __función__ es un conjunto de instrucciones (código) que se escribe una vez, pero que puede ejecutarse muchas veces. Las funciones toman un "input" o datos de entrada, usa estos datos para calcular otros valores y retorna un resultado.
 
+
 ## Estructura
 
 La estructura de una función es la siguiente
@@ -51,6 +52,7 @@ log2 <- function(x){
 log2(8)
 ```
 
+
 ## Partes de una función {.build}
 
 - __Cuerpo:__ Conjunto de sentencias o código principal de la función. `body()`
@@ -70,6 +72,7 @@ formals(log2)
 ```{r}
 environment(log2)
 ```
+
 
 ## Argumentos
 
@@ -92,6 +95,7 @@ hipotenusa_3d <- function(x,y,z){
 hipotenusa_3d(3,4,5)
 ```
 
+
 ## Argumentos por default
 
 Existen situaciones en las cuales no es necesario que el usuario ingrese uno o varios argumentos para que la función pueda ejecutarse.
@@ -107,6 +111,9 @@ hip()
 hip(x=6)
 hip(y=8)
 ```
+
+## Resultado
+
 
 ## Preguntas 
 
