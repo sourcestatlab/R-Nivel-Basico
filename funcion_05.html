@@ -116,7 +116,7 @@
           </hgroup>
   </slide>
 
-<slide class=''><hgroup><h2>Introducción</h2></hgroup><article  id="introduccion" class="smaller ">
+<slide class=''><hgroup><h2>Introducción</h2></hgroup><article  id="introduccion" class="smaller build">
 
 <p>Ahora abordaremos el diseño y la construcción de funciones propias del usuario, la posibilidad de programar de una manera sencilla una serie de análisis que puedan ser ejecutados de manera sucesiva da una gran ventaja a R sobre el resto de programas estadísticos.</p>
 
@@ -151,9 +151,37 @@ log2(8)</pre>
 
 <pre >## [1] 3</pre>
 
-</article></slide><slide class=''><hgroup><h2>Objetos</h2></hgroup><article  id="objetos" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Partes de una función</h2></hgroup><article  id="partes-de-una-funcion" class="smaller ">
 
-<p>No existe un límite en la cantidad de objetos que una <em>función</em> puede recibir.</p>
+<ul>
+<li><strong>Cuerpo:</strong> Conjunto de sentencias o código principal de la función. <code>body()</code></li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>body(log2)</pre>
+
+<pre >## {
+##     log(x, base = 2)
+## }</pre>
+
+<ul>
+<li><strong>Argumentos:</strong> Listado de valores que controlan la llamada de la función. <code>formals()</code></li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>formals(log2)</pre>
+
+<pre >## $x</pre>
+
+<ul>
+<li><strong>Ambiente:</strong> Lugar de la memoria en la cual se ubican las variables de la función. <code>environment()</code></li>
+</ul>
+
+<pre class = 'prettyprint lang-r'>environment(log2)</pre>
+
+<pre >## &lt;environment: R_GlobalEnv&gt;</pre>
+
+</article></slide><slide class=''><hgroup><h2>Argumentos</h2></hgroup><article  id="argumentos" class="smaller ">
+
+<p>No existe un límite en la cantidad de argumentos que una <em>función</em> puede recibir.</p>
 
 <pre class = 'prettyprint lang-r'>hipotenusa &lt;- function(x,y){
       return(sqrt(x^2+y^2))
@@ -173,9 +201,25 @@ hipotenusa_3d(3,4,5)</pre>
 
 <pre >## [1] 7.071068</pre>
 
-</article></slide><slide class=''><hgroup><h2>Objetos por default</h2></hgroup><article  id="objetos-por-default" class="smaller ">
+</article></slide><slide class=''><hgroup><h2>Argumentos por default</h2></hgroup><article  id="argumentos-por-default" class="smaller ">
 
-<p>Existen situaciones en las cuales no es necesario que el usuario ingrese un objeto</p>
+<p>Existen situaciones en las cuales no es necesario que el usuario ingrese uno o varios argumentos para que la función pueda ejecutarse.</p>
+
+<pre class = 'prettyprint lang-r'>hip &lt;- function(x=3, y=4){
+      return(sqrt(x^2+y^2))
+}</pre>
+
+<pre class = 'prettyprint lang-r'>hip()</pre>
+
+<pre >## [1] 5</pre>
+
+<pre class = 'prettyprint lang-r'>hip(x=6)</pre>
+
+<pre >## [1] 7.211103</pre>
+
+<pre class = 'prettyprint lang-r'>hip(y=8)</pre>
+
+<pre >## [1] 8.544004</pre>
 
 </article></slide><slide class=''><hgroup><h2>Preguntas</h2></hgroup><article  id="preguntas" class="smaller ">
 
