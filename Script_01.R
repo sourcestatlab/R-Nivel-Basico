@@ -1,10 +1,9 @@
-####################################
 ###    Curso R Nivel Basico      ###
 ###    Source Stat Lab Ec        ###
 ###          Clase 01            ###
-####################################
 
-## Instalacion delibrerias
+## Instalacion de librerias
+
 # Informacion paquetes basicos
 search()
 
