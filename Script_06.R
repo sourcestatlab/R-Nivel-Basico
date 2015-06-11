@@ -82,17 +82,141 @@ if(a>b){
 
 ## Sentencias FOR
 # Ejercicio 8
-for(i in 1:10) {
+for(i in 1:4) {
       print(i)
 }
 
+# Equivalente
+i <- 1
+print(i)
+i <- 2
+print(i)
+i <- 3
+print(i)
+i <- 4
+print(i)
 
 # Ejercicio 9
+m <- matrix(rpois(12, 8), 4, 3) # Una matriz de 4x3
+m
+s <- numeric(4) # Un vector de longitud 4, con sus valores = 0
+# Loop:
+for (i in 1:4){
+      s[i] <- sum(m[i,])
+}
+s
 
 
+# Ejercicio 10
+x <- c("a", "b", "c", "d")
+
+for(i in 1:4) {
+      print(x[i])
+}
+
+for(i in seq_along(x)) {
+      print(x[i])
+}
+
+for(letter in x) {
+      print(letter)
+}
+
+for(i in 1:4) print(x[i])
 
 
-## Sentencia WHILE
+# Ejercicio 11
+s <- numeric(1)
+m <- matrix(rpois(4, 8), 2, 2) # Una matriz de 2x2
+m
+for (i in 1:nrow(m)) {
+      for (j in 1:ncol(m)) {
+            s <- s + m[i, j]
+      }
+}
+s
 
+# Ejercicio 12
+logn <- function(x, n){
+      return(log(x, base = n))
+}
 
-## Sentencia BREAK
+logn(8, 2) # Logaritmo de 8 en base 2 
+
+body(logn)
+formals(logn)
+environment(logn)
+
+# Ejercicio 13
+hipotenusa <- function(x,y){
+      return(sqrt(x^2+y^2))
+}
+
+hipotenusa(3,4)
+
+# Ejercicio 14
+hipotenusa_4d <- function(w,x,y,z){
+      return(sqrt(w^2+x^2+y^2+z^2))
+}
+
+hipotenusa_4d(2,3,4,5)
+
+# Ejercicio 15
+hip <- function(x=3, y=4){
+      return(sqrt(x^2+y^2))
+}
+
+hip()
+hip(x=6)
+hip(y=8)
+
+# Ejercicio 16
+f <- function(x, y) {
+      return(x^2 + y / z)
+}
+
+f(3, 6)
+z <- 2
+f(3, 6)
+
+# Ejercicio 17
+y <- 10
+
+f <- function(x) {
+      y <- 2
+      y^2 + g(x)
+}
+
+g <- function(x) { 
+      x*y
+}
+
+f(3)
+
+# Ejercicio 18
+logi <- function(ini, fin, color="red") {
+      x <- seq(ini, fin, by=0.1)
+      y <- exp(x) / (1 + exp(x))
+      plot(y ~ x, type='l', col=color, main="Curva Logística", xlab="Eje x", ylab="Eje y")
+}
+
+logi(ini=-2, fin=2)
+
+# Ejercicio 19
+paradas <- 25
+pasajeros <- 0
+registro <- numeric(25)
+for (i in 1:paradas) {
+      pasajeros <- pasajeros + sample(0:8, size=1)
+      if (pasajeros >= 44) {
+            registro[i:paradas] <- 44
+            cat('Bus lleno!\n')
+            break
+      } else {
+            registro[i] <- pasajeros
+            cat('Parada', i, 'hay', pasajeros, 'pasajeros\n')
+      }
+}
+
+plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="blue")
+
