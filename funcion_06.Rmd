@@ -4,7 +4,7 @@ subtitle: R Nivel Básico
 author: Source Stat Lab
 date: Junio, 2015
 widgets: [bootstrap, quiz]
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : reveal.js        # {io2012, html5slides, shower, dzslides, ...}  ## io2012
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 mode        : selfcontained # {standalone, draft}
@@ -20,16 +20,207 @@ output:
 
 ## Introducción {.build}
 
-Ahora abordaremos el diseño y la construcción de funciones propias del usuario, la posibilidad de programar de una manera sencilla una serie de análisis que puedan ser ejecutados de manera sucesiva da una gran ventaja a R sobre el resto de programas estadísticos.
+La creación de funciones es la principal utilidad de un lenguaje de programación, aún en un lenguaje orientado a la estadística como R. Ahora nos dedicaremos a la comprensión de la estructura y funcionamiento de las funciones, así como a la creación y corrección de las mismas.
 
 <p align="center"> <img src="images/function1.jpeg" border="0" width="210" height="220"> </p>
 
-Una __función__ es un conjunto de instrucciones (código) que se escribe una vez, pero que puede ejecutarse muchas veces. Las funciones toman un "input" o datos de entrada, usa estos datos para calcular otros valores y retorna un resultado.
+Una __función__ es un conjunto de instrucciones que se escribe una vez, pero que puede ejecutarse muchas veces. Las funciones toman __datos de entrada__, usan estos datos para calcular otros valores y retornan un __resultado__.
+
+## Motivación {.build}
+
+<p align="center"> <img src="images/casino.jpeg" border="0" width="390" height="210"> </p>
+
+```{r}
+casino <- function(){
+      symbol <- c("Diamante", "0", "7", "$")
+      sample(symbol, size=3, replace=TRUE, prob=c(0.25, 0.25, 0.25, 0.25))
+}
+
+casino()
+```
+
+## Por qué construir funciones ?
+
+El primer motivo, es la __practicidad__. Pues existen situaciones en las que se requiere la ejecución de comandos en un orden específico, o volver a ejecutar una serie de comandos que los vamos a tener que utilizar nuevamente. En casos como estos, puede ahorrarnos tiempo y esfuerzo escribir una función que contenga estos pasos y que podamos utilizar una y otra vez. 
+
+Un ejemplo claro de esto es la función `sort`, que ejecuta las instrucciones necesarias para ordenar un vector.
+```{r}
+x <- sample(1:15, size=8)  # Generamos un vector en desorden
+x
+sort (x)  # la ejecución de 'sort' nos devuelve este vector ordenado.
+```
+
+Dentro de esta función están las instrucciones necesarias para realizar la tarea, y que se ejecutarán sin necesidad de hacerlo paso a paso.
+
+## Por qué construir funciones ?
+
+El segundo motivo, es la __generalización__. Muchas veces vamos a generar una función para atender a un caso particular, sin embargo, en la medida en que las funciones que escribimos nos resulten útiles, es importante poder pasar de su aplicabilidad a variables que podamos modificar en cada caso.
+
+### Ejemplo:
+
+El problema planteado es el área de un triángulo que presenta 3 cm de base y 4 cm de altura. La forma más sencilla de estimar la misma es, directamente,
+```{r}
+4 * 3 / 2
+```
+
+Sin embargo, si necesitamos hallar el área de varios triángulos, podemos crear la función `area`, utilizando base y altura como variables.
+```{r}
+area <- function(a, b) {
+  a * b / 2
+}
+```
+
+## Estructuras de Control {.build}
+
+> - Se trata de un conjunto de herramientas que permite manejar de forma mucho más elaborada el flujo de ejecución de nuestros comandos.
+> - Permiten realizar cosas como repetir líneas, hacer bifurcaciones y mucho más (virtualmente, lo que sea que se nos ocurra).
+> - Tanto las estructuras de control como el uso de funciones son aspectos fundamentales de la programación, más allá de cuál sea el lenguaje que escojamos para nuestro trabajo. 
+> - En R podemos acceder a la ayuda de las estructuras de control con el comando:
+
+```{r, eval=FALSE}
+help(Control)
+```
+
+Las estructuras de control se clasifican en:
+
+(1) __Condicionales:__ if, else (e ifelse).
+(2) __Loops o bucles:__ for, while.
+
+
+## Sentencia IF
+
+La sentencia __IF__ realiza una tarea para un determinado caso.
+```{r, eval=FALSE}
+if (condicion){ 
+      tarea
+}
+```
+La condición debe ser una prueba lógica o una expresión que evalúa si es VERDADERO o FALSO. Si se evalúa como verdadero R ejecuta el código que se encuentra entre llaves.
+```{r, eval=FALSE}
+if(num < 0){ 
+      num <- num + 1
+}
+```
+No existe un límite en la cantidad de código que puede ejecutarse entre llaves.
+
+
+## Sentencia ELSE
+
+La sentencia __ELSE__ trabaja como complemento de la sentencia __IF__, por tanto, ejecuta una tarea cuando la condición es FALSA.
+```{r, eval=FALSE}
+if (condicion) { 
+      tarea 1
+} else { 
+      tarea 2
+}
+```
+
+R internamente evalúa si la condición es VERDADERA y ejecuta la tarea 1, en caso contrario ejecuta la tarea 2.
+```{r, eval=FALSE}
+a <- -2
+if (a>=0) { 
+      print("El número es positivo")
+} else { 
+      print("El número es negativo")
+}
+```
+
+
+## Sentencia FOR
+
+La sentencia FOR nos permite repetir una acción un número determinado de veces.
+```{r, eval=FALSE}
+for(iteraciones){
+      tarea
+}
+```
+
+Para escribir valores en medio de un bucle es necesario utilizar `print()`.
+
+```{r, eval=FALSE}
+for(i in 1:4) {
+      print(i)
+}
+```
+
+Lo cual es equivalente a:
+
+```{r, eval=FALSE}
+i <- 1
+print(i)
+i <- 2
+print(i)
+i <- 3
+print(i)
+i <- 4
+print(i)
+```
+
+## Sentencia FOR
+
+Una operación común dentro del análisis de datos es la suma de filas/columnas, a continuación un ejercicio al respecto:
+```{r}
+m <- matrix(rpois(12, 8), 4, 3) # Una matriz de 4x3
+m
+s <- numeric(4) # Un vector de longitud 4, con sus valores = 0
+# Loop:
+for (i in 1:4){
+      s[i] <- sum(m[i,])
+}
+s
+```
+
+## Sentencia FOR
+
+Lazos con el mismo comportamiento:
+
+```{r, eval=FALSE}
+x <- c("a", "b", "c", "d")
+
+for(i in 1:4) {
+        print(x[i])
+}
+
+for(i in seq_along(x)) {
+        print(x[i])
+}
+
+for(letter in x) {
+        print(letter)
+}
+
+for(i in 1:4) print(x[i])
+```
+
+## Loops Anidados
+
+Nada impide que adentro de un for se escriba otro loop. Esto es lo que llamamos un __loop anidado__. Las reglas que siguen son las mismas que antes, pero hay que tener la precaución de utilizar diferentes nombres para las variables de iteración. En el siguiente ejemplo se usan i y j como variables:
+
+```{r}
+s <- numeric(1)
+m <- matrix(rpois(4, 8), 2, 2) # Una matriz de 2x2
+m
+for (i in 1:nrow(m)) {
+  for (j in 1:ncol(m)) {
+    s <- s + m[i, j]
+  }
+}
+s
+```
+
+## Ejercicios sobre Estructuras de Control
+
+1. Escriba un algoritmo que permita evaluar la función en todo su dominio.
+<p align="center"> <img src="images/funpar.jpeg" border="0" width="340" height="110"> </p>
+
+2. Escriba un algoritmo que almacene la siguiente suma: $$\sum_{i=10}^{100} (i^3 + 4i^2)$$
+
+3. Escriba un algoritmo usando una instrucción __for__ que calcule el promedio móvil de orden 2  de un vector $x=(x_1, x_2, \ldots, x_n)$. El promedio móvil de orden 2 es el vector de longitud $n-1$ cuya i-ésima componente es $(x_i + x_{i+1})/2$.
 
 
 ## Estructura
 
-La estructura de una función es la siguiente
+La estructura de una función es la siguiente:
 
 ```{r, eval=FALSE}
 nombre_funcion <- function(argumento_1, argumento_2, ... ){
@@ -42,35 +233,34 @@ nombre_funcion <- function(argumento_1, argumento_2, ... ){
 }
 ```
 
-El comando `function()` tiene como tarea crear funciones a partir de ciertos objetos y argumentos que son proporcionados por el usuario.
+El comando `function()` tiene como tarea crear funciones a partir de ciertos argumentos que son proporcionados por el usuario.
 
 ```{r}
-log2 <- function(x){
-      log(x, base = 2)
+logn <- function(x, n){
+      return(log(x, base = n))
 }
 
-log2(8)
+logn(8, 2) # Logaritmo de 8 en base 2 
 ```
-
 
 ## Partes de una función {.build}
 
-- __Cuerpo:__ Conjunto de sentencias o código principal de la función. `body()`
+- __Cuerpo:__ Conjunto de sentencias o código principal de la función.
 
 ```{r}
-body(log2)
+body(logn)
 ```
 
-- __Argumentos:__ Listado de valores que controlan la llamada de la función. `formals()`
+- __Argumentos:__ Listado de valores que controlan la llamada de la función.
 
 ```{r}
-formals(log2)
+formals(logn)
 ```
 
-- __Ambiente:__ Lugar de la memoria en la cual se ubican las variables de la función. `environment()`
+- __Ambiente:__ Lugar de la memoria en la cual se ubican las variables de la función.
 
 ```{r}
-environment(log2)
+environment(logn)
 ```
 
 
@@ -85,14 +275,14 @@ hipotenusa <- function(x,y){
 hipotenusa(3,4)
 ```
 
-Dimensionemos el cálculo de la hipotenusa a 3 dimensiones:
+Dimensionemos el cálculo de la hipotenusa a 4 dimensiones:
 
 ```{r}
-hipotenusa_3d <- function(x,y,z){
-      return(sqrt(x^2+y^2+z^2))
+hipotenusa_4d <- function(w,x,y,z){
+      return(sqrt(w^2+x^2+y^2+z^2))
 }
 
-hipotenusa_3d(3,4,5)
+hipotenusa_4d(2,3,4,5)
 ```
 
 
@@ -112,7 +302,116 @@ hip(x=6)
 hip(y=8)
 ```
 
-## Resultado
+## Lexical Scoping
+
+Consideremos la siguiente función:
+```{r, eval=TRUE, warning=FALSE, error=FALSE}
+f <- function(x, y) {
+        return(x^2 + y / z)
+}
+```
+
+La función tiene 2 argumentos x, y, además observamos que el cuerpo de la función existe la variable z (__variable libre__). Las reglas de asignación de valores en R nos permiten determinar el valor asociado z.
+```{r, warning=TRUE, error=TRUE}
+f(3, 6)
+z <- 2
+f(3, 6)
+```
+
+## Lexical Scoping {.build}
+
+Considere la siguiente función:
+```{r}
+y <- 10
+
+f <- function(x) {
+        y <- 2
+        y^2 + g(x)
+}
+
+g <- function(x) { 
+        x*y
+}
+```
+
+Cuál es el valor de f(3) ?
+
+```{r}
+f(3)
+```
+
+
+## Ejemplo: Curva Logística
+
+```{r, fig.align="center", fig.height=3.5, fig.width=6}
+logi <- function(ini, fin, color="red") {
+  x <- seq(ini, fin, by=0.1)
+  y <- exp(x) / (1 + exp(x))
+  plot(y ~ x, type='l', col=color, main="Curva Logística", xlab="Eje x", ylab="Eje y")
+}
+logi(ini=-2, fin=2)
+```
+
+## Simulación: Pasajeros - Paradas
+
+Ahora generaremos un código para simular la cantidad de pasajeros en un bus urbano.
+
+<p align="center"> <img src="images/bus.jpeg" border="0" width="340" height="240"> </p>
+
+El criterio es el siguiente: el bus recorre 25 paradas, empezando el trayecto sin pasajeros. En cada parada se subirán de 0 a 8 personas, pero debido a que existe un máximo estipulado de personas, a partir del momento en que se alcanza el total de 44 pasajeros el vehículo deja de parar. Todos los pasajeros se movilizan hasta la parada final.
+
+## Solución: Pasajeros - Paradas
+
+```{r, fig.align="center", fig.height=3.5, fig.width=6, eval=FALSE, cache=TRUE}
+paradas <- 25
+pasajeros <- 0
+registro <- numeric(25)
+for (i in 1:paradas) {
+      pasajeros <- pasajeros + sample(0:8, size=1)
+      if (pasajeros >= 44) {
+            registro[i:paradas] <- 44
+            cat('Bus lleno!\n')
+            break
+      } else {
+            registro[i] <- pasajeros
+            cat('Parada', i, 'hay', pasajeros, 'pasajeros\n')
+      }
+}
+plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="blue")
+```
+
+## Resultados Simulación
+
+```{r, fig.align="center", fig.height=3.5, fig.width=6, eval=TRUE, echo=FALSE}
+set.seed(12345)
+paradas <- 25
+pasajeros <- 0
+registro <- numeric(25)
+for (i in 1:paradas) {
+      pasajeros <- pasajeros + sample(0:8, size=1)
+      if (pasajeros >= 44) {
+            registro[i:paradas] <- 44
+            cat('Bus lleno!\n')
+            break
+      } else {
+            registro[i] <- pasajeros
+            cat('Parada', i, 'hay', pasajeros, 'pasajeros\n')
+      }
+}
+plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="blue")
+```
+
+## Simulación: Pasajeros - Paradas
+
+1. Modifique el código para crear una función con nombre __simubus__ que ejecute la misma simulación, en la que el número de paradas __(p)__ y capacidad máxima __(m)__ del bus sean los argumentos de la misma.
+
+2. Hacer una variante del código en la que además de subir personas, a partir de la parada 10 se bajen entre 0 y 4 pasajeros por parada.
+
+## R Analytic Flow
+
+R Analytic Flow es una interfaz gráfica desarrollada por Ryota Suzuki, la cual facilita el análisis de datos a través de diagramas de flujo. El software se encuentra bajo licencia BSD & GPL, por lo cual puede obtenerse de forma gratuita a través de la página web de Ef-prime, Inc. http://www.ef-prime.com para las plataformas: Windows, Mac OS X y Linux.
+
+<p align="center"> <img src="images/ranalyticflow.jpeg" border="0" width="450" height="310"> </p>
 
 
 ## Preguntas 
