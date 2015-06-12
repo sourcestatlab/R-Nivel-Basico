@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rflow [
+<!ENTITY lt "&#38;#60;">
+<!ENTITY gt "&#62;">
+<!ENTITY amp "&#38;#38;">
+<!ENTITY apos "&#39;">
+<!ENTITY quot "&#34;">
+]>
+<rflow>
+	<graph version="0.3" width="705" height="560" locationtype="a" offsetx="0" offsety="0">
+		<setting>
+			<entry key="OUTPUT_DIRECTORY"></entry>
+			<entry key="SAVE_CACHE">false</entry>
+			<entry key="FONT_SCREEN">monospace</entry>
+			<entry key="TEXT_ENCODING">MacRoman</entry>
+			<entry key="LOAD_CACHE">false</entry>
+			<entry key="IGNORE_ERROR">false</entry>
+			<entry key="SAVE_WORKSPACE"></entry>
+			<entry key="OUTPUT_REPORT">true</entry>
+			<entry key="OUTPUT_ITEMS">script</entry>
+			<entry key="RUN_TYPE">2</entry>
+			<entry key="USE_GRID">true</entry>
+			<entry key="REPORT_TYPES">pdf,html</entry>
+			<entry key="FOLDER">flujo_bus</entry>
+			<entry key="GRID_DISTANCE2">10</entry>
+			<entry key="IMAGE_SIZE">480,480</entry>
+			<entry key="FONT_OTHER">sans-serif</entry>
+		</setting>
+		<node id="0" x="480" y="300">
+			<command>### Graficos de la simulación
+
+
+for(i in 1:length(resultados)){
+	par(new=TRUE)
+	plot(resultados[[i]], col=i, type=&apos;b&apos;, xlim=c(0,p), ylim=c(0,m),
+	main=&apos;Pasajeros a bordo del bus&apos;, xlab=&apos;No de Paradas&apos;,
+	ylab=&apos;No de Pasajeros&apos;)
+}
+</command>
+			<property title="Graficos" shape="STAR"/>
+			<option type="com.ef_prime.rflow.node.base.FreeNodeModel"/>
+		</node>
+		<node id="1" x="340" y="210">
+			<command>### Creamos una función para simular el recorrido del bus
+# El argumento &quot;num&quot; controla el número de repeticiones 
+
+simrecor &lt;- function(num=1){
+	res &lt;- vector(&quot;list&quot;, 3)
+	for(j in 1:num){
+		res[[j]] &lt;- simbus(p, m)
+	}
+	return(res)
+}
+
+resultados &lt;- simrecor(veces)</command>
+			<property title="Simulación" shape="MODELING"/>
+			<option type="com.ef_prime.rflow.node.base.FreeNodeModel"/>
+		</node>
+		<node id="2" x="210" y="210">
+			<command>### Funcion Generica ###
+
+# Parametros a ingresar:
+# p: numero de paradas
+# m: capacidad del bus
+
+simbus &lt;- function(p, m){
+	registro &lt;- numeric(p)
+	pasajeros &lt;- 0
+	for (i in 1:p) {
+     	pasajeros &lt;- pasajeros + sample(0:8, size=1)
+      	if (pasajeros &gt;= m) {
+          	registro[i:p] &lt;- m
+          	cat(&apos;Bus lleno!\n&apos;)
+          	break
+      	} else {
+          	registro[i] &lt;- pasajeros
+          	cat(&apos;Parada&apos;, i, &apos;hay&apos;, pasajeros, &apos;pasajeros\n&apos;)
+      	}
+	}
+	return(registro)
+}</command>
+			<property title="Funcion" shape="RANDOM"/>
+			<option type="com.ef_prime.rflow.node.base.FreeNodeModel"/>
+		</node>
+		<node id="3" x="470" y="100">
+			<command>### Ahora mostramos únicamente estadísticas del resultado
+
+# Número de simulaciones
+cat(&apos;Se realizaron&apos;, veces, &apos;simulaciones del recorrido\n&apos;)
+
+# Número de paradas en las cuales ingresaron personas al bus
+ing_par &lt;- unlist(lapply(seq_along(resultados), function(i){sum(resultados[[i]]&lt;44)}))
+
+for(i in 1:length(ing_par)){
+	cat(&apos;En el recorrido&apos;, i, &apos;el bus paró en&apos;,ing_par[i] ,&apos;paradas\n&apos;)
+}
+
+# Promedio de paradas vacias en las cuales pueden ingresar mas personas
+pro &lt;- mean(unlist(lapply(seq_along(resultados), function(i){sum(resultados[[i]]&lt;44)})))
+
+cat(&apos;El bus paró en&apos;, round(pro,2), &apos;paradas aproximadamente\n&apos;)
+
+</command>
+			<property title="Resultados" shape="PREDICTION"/>
+			<option type="com.ef_prime.rflow.node.base.FreeNodeModel"/>
+		</node>
+		<node id="4" x="90" y="210">
+			<command>## Parámetros de entrada ##
+
+## Para iniciar el flujo se deben ingresar dos valores:
+## 1) un valor &quot;p&quot; que representa el número de paradas
+## 2) un valor &quot;m&quot; que representa la capacidad del bus
+## 3) un valor &quot;veces&quot; que representa el número de recorridos 
+##    que realiza el mismo bus en un dia
+
+## Valores por default
+p &lt;- 25
+m &lt;- 44
+veces &lt;- 1
+
+
+
+##### Activar este bloque para la simulación #####
+## Suponemos que un bus en promedio realiza 20 recorridos 
+## diarios que cubren la misma ruta en la ciudad
+veces &lt;- rpois(1, lambda=20)</command>
+			<property title="Inicio" shape="INPUT"/>
+			<option type="com.ef_prime.rflow.node.base.FreeNodeModel"/>
+		</node>
+		<edge from="4" to="2"/>
+		<edge from="1" to="3"/>
+		<edge from="1" to="0"/>
+		<edge from="2" to="1"/>
+	</graph>
+	<task>
+		<taskgroup>
+			<taskproperty>
+				<entry key="title">Task</entry>
+			</taskproperty>
+		</taskgroup>
+	</task>
+</rflow>
