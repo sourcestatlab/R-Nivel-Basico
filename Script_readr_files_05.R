@@ -9,13 +9,21 @@
 # setear wd
 wd0 <- "C:/Users/Toshiba/Desktop/readr_files_05"
 setwd(dir = wd0)
+getwd()
+list.files()
+
+wd1 <- "C:/Users/Toshiba/Desktop/readr_files_05/read_data" 
+setwd(dir = wd1)
+getwd()
+list.files()
+
 
 # obtencion de wd
 getwd()
 
 # archivos en wd
 list.files()
-list.files(pattern = ".Rmd")
+list.files(pattern = ".txt")
 
 wd1 <- "C:/Users/Toshiba/Desktop/readr_files_05/read_data"
 setwd(dir = wd1)
@@ -40,6 +48,7 @@ list.files()
 data_txt1 <- read.table(file = "data_read.txt",sep = "\t", dec = ",", header = TRUE)
 str(data_txt1)
 View(data_txt1)
+attributes(data_txt1)
 
 names(data_txt1)
 class(data_txt1)
@@ -50,8 +59,8 @@ nrow(data_txt1)
 summary(data_txt1)
 
 # Variables categóricas como character
-data_txt2 <- read.table(file = "data_read.txt",sep = "\t", dec = ",", 
-                       header = TRUE, stringsAsFactors = FALSE)
+data_txt2 <- read.table(file = "data_read.txt",sep = "\t", dec = ",",
+                        header = TRUE, stringsAsFactors = FALSE)
 str(data_txt2)
 
 
@@ -68,36 +77,36 @@ nrow(data_csv)
 
 summary(data_csv)
 
-# sep = ",", dec = "."
+# sep = ",", dec = ".", header=TRUE
 data_csv1 <- read.csv(file = "data_read.csv")
 str(data_csv1)
 
-data_csv2 <- read.csv(file = "data_read.csv",sep = ",", dec = ".", header = TRUE)
+data_csv2 <- read.csv2(file = "data_read.csv",sep = ",", dec = ".", header = TRUE)
 str(data_csv2)
 
 
 # archivo formato xlsx
-# install.packages("readxl", dependencies = TRUE)
+install.packages("readxl", dependencies = TRUE)
 library(readxl)
 ls("package:readxl")
 # lista de las hojas del libro "data_read.xlsx"
 excel_sheets(path = file.path(wd1, "data_read.xlsx"))
 
-data_xlsx <- read_excel("data_read.xlsx",sheet = "datos",col_names = TRUE, na="")
+data_xlsx <- read_excel("data_read.xlsx",sheet = "datos",col_names = TRUE, na=c(""))
 str(data_xlsx)
-
+View(data_xlsx)
 
 
 # archivos spss formato .sav
-# install.packages("foreign", dependencies = TRUE)
+install.packages("foreign", dependencies = TRUE)
 library(foreign)
 ls("package:foreign")
-system.time(data_sav1 <- read.spss("data_read.sav", use.value.labels = TRUE, 
-                      to.data.frame = TRUE))
+data_sav1 <- read.spss("data_read.sav", use.value.labels = TRUE, 
+                      to.data.frame = TRUE)
 str(data_sav1)
 
 
-# install.packages("haven", dependencies = TRUE)
+install.packages("haven", dependencies = TRUE)
 # spss: read_spss(), sas: read_sas(), stata: read_dta()
 library(haven)
 ls("package:haven")
@@ -124,12 +133,13 @@ str(data_dbx)
 ## Descargar archivos desde tablas html
 library(RCurl)
 library(XML)
-# install.packages("RCurl", dependencies = TRUE)
-# install.packages("XML", dependencies = TRUE)
+install.packages("RCurl", dependencies = TRUE)
+install.packages("XML", dependencies = TRUE)
 # http://www.sbs.gob.ec/practg/sbs_index?vp_art_id=&vp_tip=6&vp_buscr=/practg/pk_cons_bdd.p_bal_entdd_finnc
-cod_inst=1028
-cod_mes=11
-cod_anio=2010
+cod_inst<-1011
+cod_mes<-12
+cod_anio<-2014
+paste("Curso", "R", "Basico", 1, sep="")
 base_url <- paste('http://www.sbs.gob.ec/practg/pk_cons_bdd.p_bal_entdd_finnc?vp_cod_tip_instt=3&vp_cod_instt=',
                   cod_inst,'&vp_anio=', cod_anio, '&vp_mes=', cod_mes, '&vp_cod_tip_catlg=14')
 table_url <- readHTMLTable(base_url)
@@ -187,7 +197,7 @@ length(edad1)
 edad1 <- edad[1:50]
 length(edad1)
 # eliminar el primer elemento de edad y asignar a edad1
-edad1 <- edad[-1]
+edad1 <- edad-1]
 length(edad)
 length(edad1)
 # eliminar los elementos 1, 25, 51 de edad y asignar a edad1
@@ -195,7 +205,7 @@ edad1 <- edad[-c(1,25,51)]
 length(edad)
 length(edad1)
 # eliminar los primeros 1000 elementos de edad y asignar a edad1
-edad1 <- edad[-c(1,25,51)]
+edad1 <- edad[-(1:1000)]
 length(edad)
 length(edad1)
 
@@ -285,6 +295,7 @@ mean(tipviv)
 length(tipviv)
 attributes(tipviv)
 class(tipviv)
+levels(tipviv)
 
 is.atomic(tipviv)
 is.numeric(tipviv)
@@ -405,17 +416,17 @@ names(data_txt)
 edad <- data_txt[,"Edad"]
 # histograma
 hist(edad)
-hist(edad,breaks = 50)
+hist(edad,breaks = 100)
 hist(edad,breaks = 50, xlab = "Edad", ylab="Frecuencia", main="Histograma de Edad")
 hist(edad,breaks = 50, xlab = "Edad", ylab="Frecuencia", main="Histograma de Edad",
-     col="steelblue", border="gray60")
+     col="steelblue", border="gray1")
 
 # Diagrama de cajas
 boxplot(edad)
 boxplot(edad,horizontal = TRUE)
 boxplot(edad, xlab = "", ylab="Edad", main="Diag cajas de Edad")
 boxplot(edad, xlab = "", ylab="Edad", main="Diag cajas de Edad",
-     col="steelblue", border="gray60")
+     col="steelblue", border="gray1")
 
 
 # Diagrama de dispersion
@@ -434,7 +445,7 @@ barplot(table(tipviv))
 barplot(table(tipviv),horiz = TRUE)
 barplot(table(tipviv), xlab = "Vivienda", ylab="Frecuencia", main="Diagrama de barras")
 barplot(table(tipviv), xlab = "Vivienda", ylab="Frecuencia", main="Diagrama de barras",
-        col="steelblue", border="gray50")
+        col="steelblue", border="gray1")
 
 
 # multiples graficos
