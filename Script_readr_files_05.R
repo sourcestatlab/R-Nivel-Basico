@@ -261,7 +261,6 @@ min(edad)
 View(edad1)
 
 ######### Graficos PIB ############
-
 var <- rpois(n = 10, lambda = 5)
 var1 <- rpois(n = 10, lambda = 7)
 var
