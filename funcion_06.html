@@ -143,7 +143,7 @@
 
 casino()</pre>
 
-<pre >## [1] &quot;Diamante&quot; &quot;Diamante&quot; &quot;7&quot;</pre>
+<pre >## [1] &quot;Diamante&quot; &quot;7&quot;        &quot;0&quot;</pre>
 
 </article></slide><slide class=''><hgroup><h2>Por qué construir funciones ?</h2></hgroup><article  id="por-que-construir-funciones" class="smaller ">
 
@@ -154,11 +154,11 @@ casino()</pre>
 <pre class = 'prettyprint lang-r'>x &lt;- sample(1:15, size=8)  # Generamos un vector en desorden
 x</pre>
 
-<pre >## [1]  5  9  4 15  6 11 10  1</pre>
+<pre >## [1]  1  2 13 14 12  9  5  7</pre>
 
 <pre class = 'prettyprint lang-r'>sort (x)  # la ejecución de &#39;sort&#39; nos devuelve este vector ordenado.</pre>
 
-<pre >## [1]  1  4  5  6  9 10 11 15</pre>
+<pre >## [1]  1  2  5  7  9 12 13 14</pre>
 
 <p>Dentro de esta función están las instrucciones necesarias para realizar la tarea, y que se ejecutarán sin necesidad de hacerlo paso a paso.</p>
 
@@ -266,10 +266,10 @@ print(i)</pre>
 m</pre>
 
 <pre >##      [,1] [,2] [,3]
-## [1,]    7    7    9
-## [2,]    9    7    8
-## [3,]   12    9    5
-## [4,]   10    9   14</pre>
+## [1,]    9    6    5
+## [2,]    9    8   10
+## [3,]   18   13    6
+## [4,]    5    8    4</pre>
 
 <pre class = 'prettyprint lang-r'>s &lt;- numeric(4) # Un vector de longitud 4, con sus valores = 0
 # Loop:
@@ -278,7 +278,7 @@ for (i in 1:4){
 }
 s</pre>
 
-<pre >## [1] 23 24 26 33</pre>
+<pre >## [1] 20 27 37 17</pre>
 
 </article></slide><slide class=''><hgroup><h2>Sentencia FOR</h2></hgroup><article  id="sentencia-for-2" class="smaller ">
 
@@ -309,8 +309,8 @@ m &lt;- matrix(rpois(4, 8), 2, 2) # Una matriz de 2x2
 m</pre>
 
 <pre >##      [,1] [,2]
-## [1,]   12    6
-## [2,]    8    9</pre>
+## [1,]    4    7
+## [2,]    6   11</pre>
 
 <pre class = 'prettyprint lang-r'>for (i in 1:nrow(m)) {
   for (j in 1:ncol(m)) {
@@ -319,7 +319,7 @@ m</pre>
 }
 s</pre>
 
-<pre >## [1] 35</pre>
+<pre >## [1] 28</pre>
 
 </article></slide><slide class=''><hgroup><h2>Ejercicios sobre Estructuras de Control</h2></hgroup><article  id="ejercicios-sobre-estructuras-de-control" class="smaller ">
 
@@ -477,8 +477,8 @@ g &lt;- function(x) {
 
 <p>Cuál es el valor de g(2) ?</p>
 
-<pre class = 'prettyprint lang-r'>a &lt;- 1
-b &lt;- 2
+<pre class = 'prettyprint lang-r'>a &lt;- 2
+b &lt;- 1
 f &lt;- function(x){
       a*x+b
 }
@@ -493,7 +493,7 @@ g &lt;- function(x){
 
 <pre class = 'prettyprint lang-r'>g(2)</pre>
 
-<pre >## [1] 4</pre>
+<pre >## [1] 5</pre>
 
 </article></slide><slide class=''><hgroup><h2>Ejemplo: Curva Logística</h2></hgroup><article  id="ejemplo-curva-logistica" class="smaller ">
 
