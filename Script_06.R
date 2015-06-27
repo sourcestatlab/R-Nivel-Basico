@@ -172,6 +172,7 @@ hip(y=8)
 
 # Ejercicio 16
 f <- function(x, y) {
+      z <- 2
       return(x^2 + y / z)
 }
 
@@ -219,4 +220,33 @@ for (i in 1:paradas) {
 }
 
 plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="blue")
+
+
+
+simubus <- function(p,m){
+      pasajeros <- 0
+      registro <- numeric(p)
+      for (i in 1:p) {
+            pasajeros <- pasajeros + sample(0:8, size=1)
+            if (pasajeros >= m) {
+                  registro[i:p] <- m
+                  cat('Bus lleno!\n')
+                  break
+            } else {
+                  registro[i] <- pasajeros
+                  cat('Parada', i, 'hay', pasajeros, 'pasajeros\n')
+            }
+      }
+      plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="blue")
+}
+
+
+
+
+
+
+
+
+
+
 
