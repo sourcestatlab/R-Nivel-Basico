@@ -186,6 +186,7 @@ hip(y=8)
 
 # Ejercicio 16
 f <- function(x, y) {
+      z <- 2
       return(x^2 + y / z)
 }
 
@@ -254,6 +255,7 @@ plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="bl
 
 
 
+<<<<<<< HEAD
 x <- 1
 
 if(x<0){
@@ -264,10 +266,28 @@ if(x<0){
         } else {
                 x^2+4*x-7
         }
+=======
+simubus <- function(p,m){
+      pasajeros <- 0
+      registro <- numeric(p)
+      for (i in 1:p) {
+            pasajeros <- pasajeros + sample(0:8, size=1)
+            if (pasajeros >= m) {
+                  registro[i:p] <- m
+                  cat('Bus lleno!\n')
+                  break
+            } else {
+                  registro[i] <- pasajeros
+                  cat('Parada', i, 'hay', pasajeros, 'pasajeros\n')
+            }
+      }
+      plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="blue")
+>>>>>>> 9e0b83b3200a358fc152a6711a79f4755bedd141
 }
 
 
 
+<<<<<<< HEAD
 s <- numeric(1)
 for(i in 10:100){
         s <- i^3 + 4*i^2 + s
@@ -287,6 +307,8 @@ s
 
 
 
+=======
+>>>>>>> 9e0b83b3200a358fc152a6711a79f4755bedd141
 
 
 
