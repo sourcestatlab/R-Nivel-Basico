@@ -11,6 +11,13 @@ casino <- function(){
 ## Activamos el juego
 casino()
 
+area <- function(a, b) {
+        a * b / 2
+}
+
+area(a=5,b=2)
+area(b=2,a=5)
+
 
 ## Sentencias IF
 # Ejercicio 1
@@ -46,14 +53,14 @@ if (x==1){
             x <- 3
       }
 }
-
+x
 
 ## Sentencias ELSE
 # Ejercicio 5
 x <- 4 # Ingrese un valor
 if(x>=0){
       print("Número Positivo")
-} else {
+}else{
       print("Número negativo")
 }
 
@@ -71,14 +78,16 @@ res
 # Ejercicio 7
 a <- rnorm(1, mean=1, sd=3)
 b <- rnorm(1, mean=1, sd=3)
+
 if(a>b){ 
       print("Ganó A!")
-} else if(a<b){ 
-      print("Ganó B!")
-} else { 
-      print("Empate.")
+} else {
+        if(a<b){ 
+                print("Ganó B!")
+        } else { 
+                print("Empate.")
+        }
 }
-
 
 ## Sentencias FOR
 # Ejercicio 8
@@ -102,7 +111,7 @@ m
 s <- numeric(4) # Un vector de longitud 4, con sus valores = 0
 # Loop:
 for (i in 1:4){
-      s[i] <- sum(m[i,])
+        s[i] <- sum(m[i,])
 }
 s
 
@@ -142,6 +151,10 @@ logn <- function(x, n){
 }
 
 logn(8, 2) # Logaritmo de 8 en base 2 
+logn(2, 8) # Logaritmo de 8 en base 2 
+logn(x=8, n=2)
+logn(n=2, x=8)
+
 
 body(logn)
 formals(logn)
@@ -153,6 +166,7 @@ hipotenusa <- function(x,y){
 }
 
 hipotenusa(3,4)
+hipotenusa()
 
 # Ejercicio 14
 hipotenusa_4d <- function(w,x,y,z){
@@ -176,8 +190,20 @@ f <- function(x, y) {
 }
 
 f(3, 6)
-z <- 2
+#z <- 2
 f(3, 6)
+
+z<-1
+g <- function(x, y) {
+        z<-0
+        return(x + y + z)
+}
+
+g(1, 1)
+
+
+
+
 
 # Ejercicio 17
 y <- 10
@@ -201,6 +227,12 @@ logi <- function(ini, fin, color="red") {
 }
 
 logi(ini=-2, fin=2)
+logi(ini=-6, fin=6, color = "blue")
+logi(-6, 6, "blue")
+# error
+logi("blue",-6, 6)
+logi(i=-6, f=6, co = "blue")
+
 
 # Ejercicio 19
 paradas <- 25
@@ -219,4 +251,47 @@ for (i in 1:paradas) {
 }
 
 plot(registro, xlab='Parada', ylab='No. de pasajeros', main="Pasajeros", col="blue")
+
+
+
+x <- 1
+
+if(x<0){
+        x^2+2*x+3
+} else {
+        if(x>=0 & x<2){
+                x+3
+        } else {
+                x^2+4*x-7
+        }
+}
+
+
+
+s <- numeric(1)
+for(i in 10:100){
+        s <- i^3 + 4*i^2 + s
+        print(s)
+}
+
+
+x <- rpois(100, lambda = 5)
+s <- numeric(length(x)-1)
+
+for(i in 1:length(s)){
+        s[i] <- (x[i]+x[i+1])/2
+}
+s
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -16,10 +16,17 @@ x
 y <- "SSL"
 y
 
+ls()
 ## Vectores
 ## 1. Vectores atómicos
 vec <- c(1, 2)
 vec
+length(vec)
+print(vec)
+
+assign("vec1", c(1,2,3))
+vec1
+get("vec1")
 
 ## Elementos de un vector atómico
 # La i-ésima componente de un vector se obtiene mediante vec[i]
@@ -27,6 +34,13 @@ vec
 vec <- c(6, 1, 3, 6, 10, 5)
 vec
 vec[5]
+componente <- vec[5]
+componente
+
+vector("logical",20)
+assign("vec",c(2,4,6,8))
+vec
+get("vec")
 
 # Para seleccionar varios elementos utilizamos la función c().
 vec <- c(6, 1, 3, 6, 10, 5)
@@ -34,15 +48,21 @@ vec
 
 # Elementos de la posición 2, 4, 6
 vec[c(2, 4, 6)]
+vec[c(1,3)]
+
+
 
 # Eliminamos elementos antecediendo el signo -
 
 vec[-c(2)]
-vec[-c(1, 6)]
+vecn <- vec[-c(1, 6)]
 
 # TRUE, FALSE también permiten obtener ciertos elementos:
 vec <- c(6, 1, 3, 6, 10, 5)
 vec
+vec[vec!=6]
+(vec!=6)*1
+
 # elementos de la posición 2, 4, 6
 vec[c(FALSE, TRUE, FALSE, TRUE, FALSE, TRUE)]
 
@@ -90,6 +110,20 @@ int_vec <- c(3L, 7L, 1L)
 int_vec
 is.numeric(int_vec)
 
+vec <- c(vec, c(15,18))
+vec
+vec1 <- c(c(2,-1), vec)
+
+1:100
+seq(from=0,to=2.3,by=0.5)
+vec
+vec[c(1,2,3,4,5,6)]
+vec[1:6]
+
+v1<- c(2,3,6,0.5)
+v3<-c(1,2)
+v1+v3
+
 ## Coerción
 # Los elementos de un vector son del mismo tipo
 # Si combinamos tipos diferentes, serán coercionados al tipo más flexible dado por la jerarquia
@@ -102,6 +136,7 @@ typeof(vec)
 vec1 <- c(0.5, 2, TRUE, FALSE)
 vec1
 typeof(vec1)
+
 
 # Las funciones +, abs, log, etc coercionan a double o integer.
 
@@ -119,6 +154,7 @@ typeof(vec3)
 # Las funciones &, |, any, all, etc coercionan a logical.
 # Coerción función all
 vec <- c(TRUE, FALSE, FALSE, TRUE)
+!vec
 (vec1 <- all(vec)) # TRUE si todos sus elementos son TRUE
 typeof(vec1)
 
@@ -383,7 +419,7 @@ data(mtcars)
 # visualizar data frame
 View(mtcars)
 # Visualizar las n primeras filas
-head(mtcars, n = 2)
+head(mtcars, n = 4)
 # Visualizar las n últimas filas
 tail(mtcars, n = 2)
 
@@ -392,6 +428,7 @@ tail(mtcars, n = 2)
 attributes(mtcars)
 # Nombres de columnas
 names(mtcars) # colnames(mtcars)
+colnames(mtcars)
 # Clase
 class(mtcars)
 # Nombres de filas
