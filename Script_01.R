@@ -102,7 +102,18 @@ rnorm(10)
 ## Eliminacion de librerias.
 remove.packages("nombre_paquete", "directorio")
 
+
+## Directorio de Trabajo
+# directorio de trabajo actual
+getwd()
+# cambiar directorio de trabajo
+setwd("C:/Users/Toshiba/Desktop/R-Nivel-Basico/read_data")
+# enlista los archivos en el directorio
+list.files()
+
 ## Mantenimiento de archivos
+dir.create("archivos")
+setwd("C:/Users/Toshiba/Desktop/R-Nivel-Basico/archivos")
 file.create("nombre_archivo.R")
 file.edit("nombre_archivo.R")
 file.exists("nombre_archivo.R")
